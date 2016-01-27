@@ -70,50 +70,74 @@ body {
 /*functional grays*/
 
 .charcoal {
-    
+    background-color: #333333;
 }
 
 .gray {
-    
+    background-color: #4b4b4b;
 }
 
-gray {
-    
+light_gray {
+   background-color: #959595; 
 }
 
-.light_gray {
-    
+.lighter_gray {
+    background-color: #cccccc;
 }
 
 /*ui colors*/
 
-.bt_red {}
+.bt_red {
+    background-color: #a80309;
+}
 
-.bt_red_pressed {}
+.bt_red_pressed {
+    background-color: #990308;
+}
 
-.link_a {}
+.link_a {
+    background-color: #0066cc;
+}
 
-.link_h {}
+.link_h {
+    background-color: #00478e;
+}
 
 /*pops of color*/
 
-.teal {}
+.teal {
+    background-color: #82ceac;
+}
 
-.sky {}
+.sky {
+    background-color: #abe0f9;
+}
 
-.gold {}
+.gold {
+    background-color: #fbd362;
+}
 
-.salmon {}
+.salmon {
+    background-color: #f9b295;
+}
 
 
 /*secondary colors*/
-.green {}
+.green {
+    background-color: #e9f8e9;
+}
 
-.blue {}
+.blue {
+    background-color: #e8f6fe;
+}
 
-.yellow {}
+.yellow {
+    background-color: #feffe4;
+}
 
-.orange {}
+.orange {
+    background-color: #fef0e8;
+}
 
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
     font-family: nhg-display-bold,arial,sans-serif;
@@ -168,10 +192,6 @@ gray {
     
 }
 
-.timer {
-    max-width: 100%;
-    visibility: hidden;
-}
 
 #players {
     margin-top: 100px;
