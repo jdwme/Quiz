@@ -182,7 +182,7 @@ light_gray {
 
 .waiting {
     font-size: 64px;
-    color: #C90000;
+    color: #cd040b;
     line-height: 81px;
 }
 
@@ -192,6 +192,20 @@ light_gray {
     
 }
 
+.timer {
+    font-size:81px;
+    position: absolute;
+    line-height: 162px;
+    text-align: center;
+    height: 150px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #cd040b;
+    z-index: 1;
+    
+    
+}
 
 #players {
     margin-top: 100px;
@@ -219,6 +233,7 @@ light_gray {
 }
 
 .spinner {
+    z-index: -1;
   -webkit-animation: rotator 1.4s linear infinite;
           animation: rotator 1.4s linear infinite;
 }
