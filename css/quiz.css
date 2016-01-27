@@ -1,0 +1,233 @@
+html {
+    font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+@font-face {
+    font-family: nhg-display-bold;
+    src: url(../fonts/Neue-haas/display-bold-75.eot?#iefix);
+    src: url(../fonts/Neue-haas/display-bold-75.eot?#iefix) format("eot"),url(../fonts/Neue-haas/display-bold-75.woff2) format("woff2"),url(../fonts/Neue-haas/display-bold-75.woff) format("woff"),url(../fonts/Neue-haas/display-bold-75.ttf) format("truetype"),url(../fonts/Neue-haas/display-bold-75.svg) format("svg#display-bold-75");
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: .025em;
+}
+
+@font-face {
+    font-family: nhg-text-bold;
+    src: url(../fonts/Neue-haas/text-bold-75.eot?#iefix);
+    src: url(../fonts/Neue-haas/text-bold-75.eot?#iefix) format("eot"),url(../fonts/Neue-haas/text-bold-75.woff2) format("woff2"),url(../fonts/Neue-haas/text-bold-75.woff) format("woff"),url(../fonts/Neue-haas/text-bold-75.ttf) format("truetype"),url(../fonts/Neue-haas/text-bold-75.svg) format("svg#text-bold-75");
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: .025em;
+}
+
+@font-face {
+    font-family: nhg-text-roman;
+    src: url(../fonts/Neue-haas/roman-text-55.eot?#iefix);
+    src: url(../fonts/Neue-haas/roman-text-55.eot?#iefix) format("eot"),url(../fonts/Neue-haas/roman-text-55.woff2) format("woff2"),url(../fonts/Neue-haas/roman-text-55.woff) format("woff"),url(../fonts/Neue-haas/roman-text-55.ttf) format("truetype"),url(../fonts/Neue-haas/roman-text-55.svg) format("svg#roman-text-55");
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: .025em;
+}
+
+@font-face {
+    font-family: nhg-text-italic;
+    src: url(../fonts/Neue-haas/text-italic-56.eot?#iefix);
+    src: url(../fonts/Neue-haas/text-italic-56.eot?#iefix) format("eot"),url(../fonts/Neue-haas/text-italic-56.woff2) format("woff2"),url(../fonts/Neue-haas/text-italic-56.woff) format("woff"),url(../fonts/Neue-haas/text-italic-56.ttf) format("truetype"),url(../fonts/Neue-haas/text-italic-56.svg) format("svg#text-italic-56");
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: .025em;
+}
+
+body {
+    background: #F2F2F2;
+    font-family: Arial,sans-serif,Helvetica;
+    height: 100%;
+    margin-bottom: 8em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+    font-family: nhg-display-bold,arial,sans-serif;
+    letter-spacing: .025em;
+}
+
+.h1 button,.h1 small,.h2 button,.h2 small,.h3 button,.h3 small,.h4 button,.h4 small,.h5 button,.h5 small,.h6 button,.h6 small,h1 button,h1 small,h2 button,h2 small,h3 button,h3 small,h4 button,h4 small,h5 button,h5 small,h6 button,h6 small {
+    font-family: Arial,sans-serif,Helvetica;
+}
+
+.h1,.h2,.h3,h1,h2,h3 {
+    margin-top: 0;
+    margin-bottom: .75em;
+}
+
+.h1,h1 {
+    font-size: 21px;
+    line-height: 25px;
+}
+
+.h2,.h3,h2,h3 {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.h4,h4 {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60%;
+}
+
+.main {
+    height: 100%;
+    margin-left: 10%;
+    margin-right:10%;
+}
+
+.waiting {
+    font-size: 64px;
+    color: #C90000;
+    line-height: 81px;
+}
+
+.timer-box {
+    height: 162px;
+    margin-top:3%;
+    
+}
+
+#players {
+    margin-top: 100px;
+}
+
+.avatar {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    background-color: #959595;
+    margin-top:15px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.name {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.border {
+    border-style: solid;
+    border-color: #333;
+    border-width: 1px;
+}
+
+.spinner {
+  -webkit-animation: rotator 1.4s linear infinite;
+          animation: rotator 1.4s linear infinite;
+}
+
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+
+@keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+          animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@-webkit-keyframes colors {
+  0% {
+    stroke: #82CEAC;
+  }
+  25% {
+    stroke: #ABE0F9;
+  }
+  50% {
+    stroke: #FBD362;
+  }
+  75% {
+    stroke: #F9B295;
+  }
+  100% {
+    stroke: #C90000;
+  }
+}
+
+@keyframes colors {
+  0% {
+    stroke: #82CEAC;
+  }
+  25% {
+    stroke: #ABE0F9;
+  }
+  50% {
+    stroke: #FBD362;
+  }
+  75% {
+    stroke: #F9B295;
+  }
+  100% {
+    stroke: #C90000;
+  }
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}

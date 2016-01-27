@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Demo</title>
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="css/quiz.css" />
+    <script src="js/jquery.min.js"></script>
+  
+   
+    <style>
+    .youare:after {
+        content: attr(data-num);
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="main border">
+        <div class="row">
+            <div class="ten columns border">
+                <h1 class="waiting">Waiting for players<br> to join the room.</h1>
+            </div>
+            <div class="two columns border">
+                <div class="timer-box">
+                    <svg class="spinner" width="158px" height="158px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                    <text x="20" y="20" font-family="sans-serif" font-size="20px" fill="red">Hello!</text>    
+                    </svg>
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="row border" id="players">
+            <div class="two columns border">
+                <div class="row avatar" id="avatar_1">
+                </div>
+                <div class="row name" id="name_1">
+                    <h2>Player 1</h2>
+                </div>
+            </div>
+            <div class="two columns border">
+                <div class="row avatar" id="avatar_2">
+                </div>
+                <div class="row name" id="name_2">
+                    <h2>Player 2</h2>
+                </div>
+            </div>
+            <div class="two columns">
+                <div class="row avatar" id="avatar_3">
+                </div>
+                <div class="row name" id="name_3">
+                    <h2>Player 3</h2>
+                </div>
+            </div>
+            <div class="two columns">
+                <div class="row avatar" id="avatar_4">
+                </div>
+                <div class="row name" id="name_4">
+                    <h2>Player 4</h2>
+                </div>
+            </div>
+            <div class="two columns">
+                <div class="row avatar" id="avatar_5">
+                </div>
+                <div class="row name" id="name_5">
+                    <h2>Player 5</h2>
+                </div>
+            </div>
+            <div class="two columns">
+                <div class="row avatar" id="avatar_6">
+                </div>
+                <div class="row name" id="name_6">
+                    <h2>Player 6</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row border" id="players">
+            <div class="two columns border">
+                <div class="row avatar" id="avatar_1">
+                </div>
+                <div class="row name" id="name_1">
+                    <h2>Player 7</h2>
+                </div>
+            </div>
+            <div class="two columns border">
+                <div class="row avatar" id="avatar_2">
+                </div>
+                <div class="row name" id="name_2">
+                    <h2>Player 7</h2>
+                </div>
+            </div>
+            <div class="two columns">
+                <div class="row avatar" id="avatar_3">
+                </div>
+                <div class="row name" id="name_3">
+                    <h2>Player 9</h2>
+                </div>
+            </div>
+            <div class="two columns">
+                <div class="row avatar" id="avatar_4">
+                </div>
+                <div class="row name" id="name_4">
+                    <h2>Player 10</h2>
+                </div>
+            </div>
+            <div class="two columns">
+                <div class="row avatar" id="avatar_5">
+                </div>
+                <div class="row name" id="name_5">
+                    <h2>Player 11</h2>
+                </div>
+            </div>
+            <div class="two columns">
+                <div class="row avatar" id="avatar_6">
+                </div>
+                <div class="row name" id="name_6">
+                    <h2>Player 12</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/firebase.js"></script>
+    <script src="js/leaderboard.js" async></script>
+
+    <script>
+        
+    </script>
+</body>
+
+</html>
