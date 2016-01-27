@@ -248,6 +248,7 @@ var questions = [
             gameDB.on('child_added', function(children) {
                 $('#' + children.key()).parent().addClass('taken');
                 console.log('added', children.key() + children.val());
+                if (children.key() == 'start' && thisPlayer != 'admin' && timeLeft > 0) { startGame(); }
             });
             gameDB.on('child_removed', function(children) {
                 if (children.key() == thisPlayer) { gameDB.child(thisPlayer).child('time').set(Firebase.ServerValue.TIMESTAMP); }
@@ -303,13 +304,13 @@ var questions = [
     $('#reset').click(resetGame);
     $('#start').click(startGame);
     $('#controls_help').click(controlsHelp);
-    $(".answers").click(dispatchAction);
-    $("#submit").click(dispatchAction);
-    $(".avatar").click(function() {
+    $('.answers').click(dispatchAction);
+    $('#submit').click(dispatchAction);
+    $('.avatar').click(function() {
         if (!thisPlayer) {
             thisPlayer = this.id;
             gameDB.child(thisPlayer).child('time').set(Firebase.ServerValue.TIMESTAMP);
-            $(this).parent().addClass("taken");
+            $(this).parent().addClass('taken');
         }
         else {         }
 
