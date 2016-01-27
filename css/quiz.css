@@ -175,9 +175,13 @@ light_gray {
 }
 
 .main {
-    height: 100%;
-    margin-left: 2%;
-    margin-right:2%;
+    min-height: 1000px;
+    min-width: 100%;
+    top: 0;
+    left: 0;
+    padding-left: 3%;
+    padding-right:2%;
+    margin: -1% 0% 0% -2%
 }
 
 .waiting {
@@ -244,6 +248,16 @@ light_gray {
     margin-right: auto;
 }
 
+.score_avatar {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    background-color: #959595;
+    margin-top:15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .name {
     margin-top: 15px;
     text-align: center;
@@ -255,7 +269,38 @@ light_gray {
     border-width: 1px;
 }
 
+.flexcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 865px;
+    min-width: 1280px;
+}
 
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: bottom;
+}
+
+.first, .second, .third, .fourth, .fifth, {
+        display: flex;
+        flex-flow: column;
+        
+      }
+
+.score_name, .score_avatar, .score_bar, {
+    display: flex;
+    flex-flow: row;
+   
+}
+
+.score_bar {
+    min-height: 150px;
+    max-width: 170px;
+    
+}
 
 .spinner {
     z-index: -1;
@@ -360,6 +405,7 @@ light_gray {
 }
 
 .question {
+    padding: 2%;
     max-height:536px;
     min-width: 715px;
     margin-right: -20px;
@@ -489,4 +535,20 @@ light_gray {
 .taken {
   opacity: .1;
   cursor: no-drop;
+}
+
+.correct {
+    padding: 2%;
+    min-height:536px;
+    max-width: 1015px;
+    display: table;
+    
+}
+.correct h1 {
+    display: table-cell; 
+  vertical-align: middle; 
+    min-height: inherit;
+    font-size: 72px;
+    color: #FFFFFF;
+    line-height: 74px;
 }
