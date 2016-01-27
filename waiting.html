@@ -7,43 +7,43 @@
     <link rel="stylesheet" href="css/skeleton.css" />
     <link rel="stylesheet" href="css/quiz.css" />
     <script src="js/jquery.min.js"></script>
-  
-   
+
+
     <style>
-    .youare:after {
-        content: attr(data-num);
-    }
+        .youare:after {
+            content: attr(data-num);
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="main border">
+    <div class="main">
         <div class="row">
-            <div class="ten columns border">
+            <div class="ten columns">
                 <h1 class="waiting">Waiting for players<br> to join the room.</h1>
             </div>
-            <div class="two columns border">
+            <div class="two columns">
                 <div class="timer-box">
                     <h1 class="timer">10</h1>
                     <svg class="spinner" width="158px" height="158px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
                     </svg>
-                    
+
                 </div>
-                
+
             </div>
-            
+
         </div>
-        <div class="row border" id="players">
-            <div class="two columns border">
+        <div class="row" id="players">
+            <div class="two columns">
                 <div class="row avatar" id="avatar_1">
                 </div>
                 <div class="row name" id="name_1">
                     <h2>Player 1</h2>
                 </div>
             </div>
-            <div class="two columns border">
+            <div class="two columns">
                 <div class="row avatar" id="avatar_2">
                 </div>
                 <div class="row name" id="name_2">
@@ -79,15 +79,15 @@
                 </div>
             </div>
         </div>
-        <div class="row border" id="players">
-            <div class="two columns border">
+        <div class="row" id="players">
+            <div class="two columns">
                 <div class="row avatar" id="avatar_1">
                 </div>
                 <div class="row name" id="name_1">
                     <h2>Player 7</h2>
                 </div>
             </div>
-            <div class="two columns border">
+            <div class="two columns">
                 <div class="row avatar" id="avatar_2">
                 </div>
                 <div class="row name" id="name_2">
@@ -124,54 +124,56 @@
             </div>
         </div>
     </div>
-    <div class="main border">
+    <div class="main">
         <div class="row">
-            <div class="ten columns border">
+            <div class="ten columns">
                 <div id="status">
                     <div id="question_number">1 of 10</div>
                     <div id="score" class="no_score"></div>
                 </div>
-            
-            <section class="question">
-                <h2></h2>
-                <div class="answers">
-                </div>
-            </section>
-            <section class="controls">
-                <a href="#" id="submit">Answer</a>
-                <a href="#" class="mini_controls" id="reset" title="Reset Quiz"><div class="foundicon-refresh"></div></a>
-                <a href="#" class="mini_controls" id="controls_help" title="Help with keyboard controls"><div class="foundicon-website"></div></a>
-            </section>
-        </div>
-        <div class="overlay_message" id="error_message">Please choose an answer</div>
-        <div class="overlay_message" id="correct_answer">
-        <div class="overlay_message" id="wrong_answer">
-                <script type="text/template" id="answer_template">
-                      <input class="answer_radio" type="radio" id="{{id}}" name="group" value="{{id}}">
-                      <label class="answer" for="{{id}}">{{text}}</label>
-                 </script>
+
+                <section class="question">
+                    <h2></h2>
+                    <div class="answers">
+                    </div>
+                </section>
+                <section class="controls">
+                    <a href="#" id="submit">Answer</a>
+                    <a href="#" class="mini_controls" id="reset" title="Reset Quiz">
+                        <div class="foundicon-refresh"></div>
+                    </a>
+                    <a href="#" class="mini_controls" id="controls_help" title="Help with keyboard controls">
+                        <div class="foundicon-website"></div>
+                    </a>
+                </section>
             </div>
-        </div>
-        <div class="overlay_message" id="controls_message">
-            <h2>Keyboard Controls</h2>
-            <ul>
-                <li>Up / Down: Change the answer selection</li>
-                <li>Enter: Submit answer or move to next question</li>
-            </ul>
-            <p>Click or press any key to hide this message.</p>
-        </div>
+            <div class="overlay_message" id="error_message">Please choose an answer</div>
+            <div class="overlay_message" id="correct_answer">
+                <div class="overlay_message" id="wrong_answer">
+                    <script type="text/template" id="answer_template">
+                        <input class="answer_radio" type="radio" id="{{id}}" name="group" value="{{id}}">
+                        <label class="answer" for="{{id}}">{{text}}</label>
+                    </script>
+                </div>
+            </div>
+            <div class="overlay_message" id="controls_message">
+                <h2>Keyboard Controls</h2>
+                <ul>
+                    <li>Up / Down: Change the answer selection</li>
+                    <li>Enter: Submit answer or move to next question</li>
+                </ul>
+                <p>Click or press any key to hide this message.</p>
             </div>
         </div>
     </div>
-            
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70.0-2014.11.23/jquery.blockUI.js"></script>
-            <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-        <script src="http://d3js.org/d3.v2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://d3js.org/d3.v2.js"></script>
     <script src="js/firebase.js"></script>
     <script src="js/custom.js"></script>
 
     <script>
-        
     </script>
 </body>
 
