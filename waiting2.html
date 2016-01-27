@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Demo</title>
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="css/quiz.css" />
+    <script src="js/jquery.min.js"></script>
+  
+   
+    <style>
+    .youare:after {
+        content: attr(data-num);
+    }
+    </style>
+</head>
+
+<body>
+
+    <div class="main border">
+        <div class="row">
+            <div class="ten columns border">
+                <div id="status">
+                    <div id="question_number">1 of 10</div>
+                    <div id="score" class="no_score"></div>
+                </div>
+            </header>
+            <section class="question">
+                <h2></h2>
+                <div class="answers">
+                </div>
+            </section>
+            <section class="controls">
+                <a href="#" id="submit">Answer</a>
+                <a href="#" class="mini_controls" id="reset" title="Reset Quiz"><div class="foundicon-refresh"></div></a>
+                <a href="#" class="mini_controls" id="controls_help" title="Help with keyboard controls"><div class="foundicon-website"></div></a>
+            </section>
+        </div>
+        <div class="overlay_message" id="error_message">Please choose an answer</div>
+        <div class="overlay_message" id="correct_answer">
+        <div class="overlay_message" id="wrong_answer">
+                <script type="text/template" id="answer_template">
+                      <input class="answer_radio" type="radio" id="{{id}}" name="group" value="{{id}}">
+                      <label class="answer" for="{{id}}">{{text}}</label>
+                 </script>
+            </div>
+        </div>
+        <div class="overlay_message" id="controls_message">
+            <h2>Keyboard Controls</h2>
+            <ul>
+                <li>Up / Down: Change the answer selection</li>
+                <li>Enter: Submit answer or move to next question</li>
+            </ul>
+            <p>Click or press any key to hide this message.</p>
+        </div>
+            </div>
+        </div>
+    </div>
+            
+    <script src="js/firebase.js"></script>
+    <script src="custom.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70.0-2014.11.23/jquery.blockUI.js"></script>
+            <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script src="http://d3js.org/d3.v2.js"></script>
+    <script>
+        
+    </script>
+</body>
+
+</html>
