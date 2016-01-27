@@ -82,7 +82,7 @@ var questions = [
                 nextQuestion();
             }
         },
-        startGame = function() { timeSync() },
+        startGame = function() { timeSync(); },
         showResults = function() {
             answersBlock.empty();
             questionTitle.text('You answered ' + results.currentScore + ' of '
@@ -212,6 +212,17 @@ var questions = [
             gameDB.once('value',function(timeShot) {
                 var starttime = timeShot.val()['start'];
                 time = timeShot.val()[thisPlayer].time;
+                countDown = function() {
+                    if (timeLeft == 0) {
+                        clearTimeout(timerId);
+                        $('h1.timer').hide();
+                        if (thisPlayer) { nextQuestion; }
+                        else { console.log("next"); }
+                      } else {
+                        $('h1.timer').text(timeLeft);
+                        timeLeft--;
+                      }
+                    }
                 if (!starttime) {
                     gameDB.child('start').set(Firebase.ServerValue.TIMESTAMP);
                     timeLeft = timerCounter;
@@ -232,18 +243,6 @@ var questions = [
                     console.log(starttime, time, 'already');
                 }
             });
-            countDown = function() {
-                    if (timeLeft == 0) {
-                        clearTimeout(timerId);
-                        $('h1.timer').hide();
-                        if (thisPlayer) { nextQuestion; }
-                        else { console.log("next"); }
-                      } else {
-                        console.log(timeLeft);
-                        $('h1.timer').text(timeLeft);
-                        timeLeft--;
-                      }
-                    }
         },
         init = function() {
             gameDB.on('child_added', function(children) {
@@ -305,7 +304,7 @@ var questions = [
     $(".avatar").click(function() {
         if (!thisPlayer) {
             thisPlayer = this.id;
-            console.log(this, thisPlayer);
+            gameDB.child(thisPlayer).child('time').set(Firebase.ServerValue.TIMESTAMP);
             $(this).parent().addClass("taken");
         }
         else { }
