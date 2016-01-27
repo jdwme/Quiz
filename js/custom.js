@@ -72,15 +72,17 @@ var questions = [
             return correctCount;
             // % = Math.round(100 * correctCount / answers.length);
         },
-        resetgame = function() {
+        resetGame = function() {
             if (resetCounter++ > 1 || gameOver || confirm('Are you sure you want to reset the game?')) {
                 counter = 0;
                 gameOver = false;
+                clearDB();
                 results = {count: 0, answers: [], currentScore: 0};
                 scoreNode.addClass('no_score').text('');
                 nextQuestion();
             }
         },
+        startGame = function() { timeSync() },
         showResults = function() {
             answersBlock.empty();
             questionTitle.text('You answered ' + results.currentScore + ' of '
@@ -255,7 +257,7 @@ var questions = [
             gameDB.on('child_changed', function(children) {
                 console.log('changed', children.key() + children.val());
             });
-            timeSync();
+           
         },
         clearDB = function() {
          var onComplete = function(error) {
@@ -295,7 +297,8 @@ var questions = [
             }
         };
 
-    $('#reset').click(resetgame);
+    $('#reset').click(resetGame);
+    $('#start').click(startGame);
     $('#controls_help').click(controlsHelp);
     $(".answers").click(dispatchAction);
     $("#submit").click(dispatchAction);
