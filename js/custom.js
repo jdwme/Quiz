@@ -250,11 +250,15 @@ var questions = [
                 console.log('added', children.key() + children.val());
             });
             gameDB.on('child_removed', function(children) {
+                if (children.key() == thisPlayer) { gameDB.child(thisPlayer).child('time').set(Firebase.ServerValue.TIMESTAMP); }
                 $('#' + children.key()).parent().removeClass('taken');
                 console.log('removed', children.key() + children.val());
             });
             gameDB.on('child_changed', function(children) {
                 console.log('changed', children.key() + children.val());
+            });
+            gameDB.once('value', function(gameDB) {
+                gameDB = gameDB;
             });
            
         },
@@ -307,7 +311,7 @@ var questions = [
             gameDB.child(thisPlayer).child('time').set(Firebase.ServerValue.TIMESTAMP);
             $(this).parent().addClass("taken");
         }
-        else { }
+        else {         }
 
     });
     $(document).keydown(keydownListener);
