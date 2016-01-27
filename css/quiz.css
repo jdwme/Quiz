@@ -269,32 +269,29 @@ light_gray {
     border-width: 1px;
 }
 
-.flexcontainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 865px;
-    min-width: 1280px;
-}
 
-.flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: bottom;
-}
 
 .first, .second, .third, .fourth, .fifth, {
-        display: flex;
-        flex-flow: column;
-        
-      }
+    min-height: 150px;
+    width: 180px;
+    background-color: #e46119;
+    border: 1px solid #626262;
+    margin: 3px;
+    align-items: flex-start;
+}
 
 .score_name, .score_avatar, .score_bar, {
-    display: flex;
-    flex-flow: row;
+    
+    
    
 }
+
+
+.score_name p {
+    font-size: 18px;
+    align-items: middle;
+}
+
 
 .score_bar {
     min-height: 150px;
