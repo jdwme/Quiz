@@ -207,6 +207,29 @@ light_gray {
     
 }
 
+.timer-box2 {
+    height: 162px;
+    width: 162px;
+    margin-top:0%;
+    
+    
+}
+
+.timer2 {
+    font-size:81px;
+    position: absolute;
+    line-height: 162px;
+    text-align: center;
+    height: 150px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #cd040b;
+    z-index: 1;
+    
+    
+}
+
 #players {
     margin-top: 100px;
 }
@@ -230,6 +253,32 @@ light_gray {
     border-style: solid;
     border-color: #333;
     border-width: 1px;
+}
+
+.question {
+    max-height:280px;
+    
+}
+
+.question h1 {
+    color: #333;
+    font-size: 86px;
+    line-height: 86px;
+}
+
+.normal {
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.scale {
+    
+    -ms-transform: scale(0.75,0.75); /* IE 9 */
+    -webkit-transform: scale(0.75,0.75); /* Safari */
+    transform: scale(0.65,0.65) translate(-20%,-20%);
+    
+    
+   
 }
 
 .spinner {
