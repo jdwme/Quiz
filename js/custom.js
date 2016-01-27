@@ -44,8 +44,10 @@ var questions = [
         ENTER = 13,
         ESCAPE = 27,
         counter = 0,
+        timeLeft = 0,
         gameOver = false,
         resetCounter = 0,
+        timerCounter = 30,
         player = $("#player"),
         scoreNode = $('#score'),
         actionButton = $('#submit'),
@@ -198,13 +200,73 @@ var questions = [
             });
         },
         timeSync = function() {
-            gameDB.child(thisPlayer).child('time').set(Firebase.ServerValue.TIMESTAMP);
+            if (thisPlayer) {
+                gameDB.child(thisPlayer).child('time').set(Firebase.ServerValue.TIMESTAMP);
+            }
+            else {
+                thisPlayer = 'admin';
+                gameDB.child(thisPlayer).child('time').set(Firebase.ServerValue.TIMESTAMP);
+             }
             gameDB.once('value',function(timeShot) {
                 var starttime = timeShot.val()['start'];
-                var time = timeShot.val()[thisPlayer]['time'];
-                console.log(starttime, time);
+                time = timeShot.val()[thisPlayer].time;
+                if (!starttime) {
+                    gameDB.child('start').set(Firebase.ServerValue.TIMESTAMP);
+                    timeLeft = timerCounter;
+                    elem = $('timer');
+                    timerId = setInterval(countDown, 1000);
+                    timerStart = true;
+                    console.log(starttime, time, 'begin');
+                }
+                else {
+                    remain = ((time - starttime) / 1000);
+                    timeLeft = Math.floor(timerCounter - remain);
+                    console.log(timeLeft + ' timeLeft');
+                    elem = $('timer');
+                    if (timeLeft > 0) { timerId = setInterval(countDown, 1000); }
+                    else { console.log('game started already'); return; }
+                    timerStart = true;
+                    console.log(remain);
+                    console.log(starttime, time, 'already');
+                }
             });
+            countDown = function() {
+                    if (timeLeft == 0) {
+                        clearTimeout(timerId);
+                        $('h1.timer').hide();
+                        if (thisPlayer) { nextQuestion; }
+                        else { console.log("next"); }
+                      } else {
+                        console.log(timeLeft);
+                        $('h1.timer').text(timeLeft);
+                        timeLeft--;
+                      }
+                    }
         },
+        init = function() {
+            gameDB.on('child_added', function(children) {
+                $('#' + children.key()).parent().addClass('taken');
+                console.log('added', children.key() + children.val());
+            });
+            gameDB.on('child_removed', function(children) {
+                $('#' + children.key()).parent().removeClass('taken');
+                console.log('removed', children.key() + children.val());
+            });
+            gameDB.on('child_changed', function(children) {
+                console.log('changed', children.key() + children.val());
+            });
+            timeSync();
+        },
+        clearDB = function() {
+         var onComplete = function(error) {
+            if (error) {
+                    console.log('remove failed');
+                  } else {
+                    console.log('remove succeeded');
+                  }
+                }
+            gameDB.remove(onComplete);
+         }
         keydownListener = function(e) {
             // Remove message if present
             if ($('.blockMsg:visible').length) {
@@ -242,7 +304,6 @@ var questions = [
             thisPlayer = this.id;
             console.log(this, thisPlayer);
             $(this).parent().addClass("taken");
-            gameDB.child("start").set(Firebase.ServerValue.TIMESTAMP);
         }
         else { }
 
@@ -250,7 +311,9 @@ var questions = [
     $(document).keydown(keydownListener);
 
     // Load first question
-    nextQuestion();
+    // nextQuestion();
+    // Initialize
+        init();
 
 
     // Draw d3.js chart with score data
