@@ -248,6 +248,13 @@ light_gray {
     margin-right: auto;
 }
 
+.score {
+    padding: 2%;
+    min-height:536px;
+    min-width: 1015px;
+    display: table;
+}
+
 .score_avatar {
     border-radius: 50%;
     height: 150px;
@@ -273,7 +280,7 @@ light_gray {
 
 .first, .second, .third, .fourth, .fifth, {
     min-height: 150px;
-    width: 180px;
+    min-width: 280px;
     background-color: #e46119;
     border: 1px solid #626262;
     margin: 3px;
