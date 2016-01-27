@@ -6,53 +6,60 @@
     <title>Quiz Demo</title>
     <link rel="stylesheet" href="css/skeleton.css" />
     <link rel="stylesheet" href="css/quiz.css" />
+    <link rel="stylesheet" href="css/animate.css" />
     <script src="js/jquery.min.js"></script>
-  
-   
-    
+
+
+
 </head>
 
-<body>
+<body class="green">
 
-    <div class="main border">
+    <div class="main">
         <div class="row">
-            <div class="ten columns border">
-                <div class="question scale">
-                    <h1>This is an example of question 1 and how it would initially appear on screen.</h1>
+                <!-- when answers slide in, add "scale" to the questions div-->
+            <div class="seven columns question">
+
+                <h1>This is an example of question 1 and how it would initially appear on screen.</h1>
+
+            </div>
+            <div class="five columns answers animated slideInRight">
+                <div class="row">
+                    <div class="six columns answer sky">
+                        <p>Answer 1</p>
+                    </div>
+                    <div class="six columns answer gold">
+                        <p>Answer 2 has more lines of text</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns answer teal">
+                        <p>Answer 3</p>
+                    </div>
+                    <div class="six columns answer salmon">
+                        <p>Answer 4</p>
+                    </div>
                 </div>
             </div>
-            <div class="two columns border">
-                <div class="timer-box">
-                    <h1 class="timer">10</h1>
-                    <svg class="spinner" width="158px" height="158px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-                    </svg>
-                    
-                </div>
-                
-            </div>
-            
+
         </div>
         <div class="row">
-            <div class="timer-box2 border">
-                    <h1 class="timer2">10</h1>
-                    <svg class="spinner" width="158px" height="158px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <div class="timer-box2">
+                <h1 class="timer2">10</h1>
+                <svg class="spinner" width="158px" height="158px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                     <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-                    </svg>
-                    
+                </svg>
+
             </div>
         </div>
-        
-        
+
+
     </div>
-    
-            
-    <script src="js/firebase.js"></script>
-    <script src="js/firebase.js"></script>
+
+
     <script src="js/custom.js"></script>
 
     <script>
-        
     </script>
 </body>
 
