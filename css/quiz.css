@@ -52,6 +52,69 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/*colors*/
+
+.red-primary {
+    background-color: #cd040b;
+}
+
+ /*background grays*/
+.bg_gray1 {
+    background-color: #e4e5e3;
+}
+
+.bg_gray {
+    background-color: #f6f6f6;
+}
+
+/*functional grays*/
+
+.charcoal {
+    
+}
+
+.gray {
+    
+}
+
+gray {
+    
+}
+
+.light_gray {
+    
+}
+
+/*ui colors*/
+
+.bt_red {}
+
+.bt_red_pressed {}
+
+.link_a {}
+
+.link_h {}
+
+/*pops of color*/
+
+.teal {}
+
+.sky {}
+
+.gold {}
+
+.salmon {}
+
+
+/*secondary colors*/
+.green {}
+
+.blue {}
+
+.yellow {}
+
+.orange {}
+
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
     font-family: nhg-display-bold,arial,sans-serif;
     letter-spacing: .025em;
@@ -103,6 +166,11 @@ body {
     height: 162px;
     margin-top:3%;
     
+}
+
+.timer {
+    max-width: 100%;
+    visibility: hidden;
 }
 
 #players {
