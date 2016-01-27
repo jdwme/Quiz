@@ -429,9 +429,8 @@ light_gray {
 .answer:nth-of-type(4) {
   background: #fab393;
 }*/
-.answer:hover > .overlay {
-     background-color:#000;
-    opacity:0.5;
+.answer:hover {
+  box-shadow: inset 0 0 0 150px rgba(0,0,0,0.3) ;
   cursor: pointer;
 }
 .answer_radio:checked + .answer {
