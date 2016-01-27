@@ -197,6 +197,14 @@ var questions = [
                 }
             });
         },
+        timeSync = function() {
+            gameDB.child(thisPlayer).child('time').set(Firebase.ServerValue.TIMESTAMP);
+            gameDB.once('value',function(timeShot) {
+                var starttime = timeShot.val()['start'];
+                var time = timeShot.val()[thisPlayer]['time'];
+                console.log(starttime, time);
+            });
+        },
         keydownListener = function(e) {
             // Remove message if present
             if ($('.blockMsg:visible').length) {
