@@ -18,12 +18,23 @@
     <div class="main">
         <div class="row">
                 <!-- when answers slide in, add "scale" to the questions div-->
-            <div class="seven columns question">
+            <div class="five columns question">
 
-                <h1>This is an example of question 1 and how it would initially appear on screen.</h1>
+                <h2>This is an example of question 1 and how it would initially appear on screen.</h2>
 
             </div>
-            <div class="five columns answers animated fadeInRight">
+            </div>
+            <div class="row">
+            <div class="six columns answers animated fadeInRight">
+                <div class="row">
+                <script type="text/template" id="answer_template">
+                <input class="two columns answer_radio" type="radio" id="{{id}}" name="group" value="{{id}}">
+                <label class="two columns answer" for="{{id}}">{{text}}</label>
+                </script>
+                </div>
+                </div>
+                </div>
+            <!--<div class="five columns answers animated fadeInRight">
                 <div class="row">
                     <div class="six columns answer sky">
                         <p>Answer 1</p>
@@ -39,10 +50,9 @@
                     <div class="six columns answer salmon">
                         <p>Answer 4</p>
                     </div>
-                </div>
+                </div>-->
             </div>
 
-        </div>
         <div class="row">
             <div class="timer-box2">
                 <h1 class="timer2">10</h1>
@@ -56,7 +66,7 @@
 
     </div>
 
-
+    <script src="js/firebase.js"></script>
     <script src="js/custom.js"></script>
 
     <script>

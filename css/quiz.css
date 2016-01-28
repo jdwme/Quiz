@@ -467,7 +467,7 @@ light_gray {
   vertical-align: middle; 
   text-align: center; 
 }
-/*.answer:nth-of-type(1) {
+.answer:nth-of-type(1) {
     background: #aadffa;
 }
 .answer:nth-of-type(2) {
@@ -478,7 +478,7 @@ light_gray {
 }
 .answer:nth-of-type(4) {
   background: #fab393;
-}*/
+}
 .answer:hover {
   box-shadow: inset 0 0 0 150px rgba(0,0,0,0.3) ;
   cursor: pointer;
@@ -510,6 +510,7 @@ light_gray {
 .question h2 {
   font-size: 1.4em;
   font-weight: 800;
+  line-height: 1.5em;
 }
 .question h2.show_answer {
   font-weight: 600;

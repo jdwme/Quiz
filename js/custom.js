@@ -108,7 +108,6 @@ var questions = [
                     }
                 }
                 currentAverage = sum / count;
-                 gameDB.off();
                 //data.push({name: 'Everyone else', score: currentAverage});
                 drawChart('.answers', data);
                 $(".answers").addClass('rotate');
@@ -116,7 +115,7 @@ var questions = [
             });
         },
         pushScore = function() {
-            if (thisPlayer) gameDB.child(thisPlayer).set(results.currentScore);
+            if (thisPlayer) { gameDB.child(thisPlayer).set(results.currentScore); }
         },
         inputCheck = function() {
             if ($('.answer_radio:checked').length) {
@@ -216,7 +215,7 @@ var questions = [
                     if (timeLeft == 0) {
                         clearTimeout(timerId);
                         $('h1.timer').hide();
-                        if (thisPlayer) { nextQuestion; }
+                        if (thisPlayer) { nextQuestion(); }
                         else { console.log("next"); }
                       } else {
                         $('h1.timer').text(timeLeft);
@@ -248,7 +247,8 @@ var questions = [
             gameDB.on('child_added', function(children) {
                 $('#' + children.key()).parent().addClass('taken');
                 console.log('added', children.key() + children.val());
-                if (children.key() == 'start' && thisPlayer != 'admin' && timeLeft > 0) { startGame(); }
+                console.log(children.key() + ' ' + thisPlayer + timeLeft);
+                if (children.key() === "start" && timeLeft < 0) { startGame(); console.log('started'); }
             });
             gameDB.on('child_removed', function(children) {
                 if (children.key() == thisPlayer) { gameDB.child(thisPlayer).child('time').set(Firebase.ServerValue.TIMESTAMP); }
