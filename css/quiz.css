@@ -466,8 +466,9 @@ h4 {
     text-align: center;
     height: 226px;
     max-height: 226px;
-    min-width: 226px;
+    width: 226px;
     margin-top: 3%;
+    margin-left: 3%;
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
     border-radius: 3px;
     display: table;
@@ -479,7 +480,7 @@ h4 {
     text-align: center;
 }
 
-.answer:nth-of-type(1) {
+/*.answer:nth-of-type(1) {
     background: #aadffa;
 }
 
@@ -493,7 +494,7 @@ h4 {
 
 .answer:nth-of-type(4) {
     background: #fab393;
-}
+}*/
 
 .answer:hover {
     box-shadow: inset 0 0 0 150px rgba(0, 0, 0, 0.3);
