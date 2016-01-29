@@ -1,7 +1,10 @@
 html {
-    font-family: sans-serif; /* 1 */
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+    font-family: sans-serif;
+    /* 1 */
+    -ms-text-size-adjust: 100%;
+    /* 2 */
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
     color: #222;
     font-size: 1em;
     line-height: 1.4;
@@ -10,7 +13,7 @@ html {
 @font-face {
     font-family: nhg-display-bold;
     src: url(../fonts/Neue-haas/display-bold-75.eot?#iefix);
-    src: url(../fonts/Neue-haas/display-bold-75.eot?#iefix) format("eot"),url(../fonts/Neue-haas/display-bold-75.woff2) format("woff2"),url(../fonts/Neue-haas/display-bold-75.woff) format("woff"),url(../fonts/Neue-haas/display-bold-75.ttf) format("truetype"),url(../fonts/Neue-haas/display-bold-75.svg) format("svg#display-bold-75");
+    src: url(../fonts/Neue-haas/display-bold-75.eot?#iefix) format("eot"), url(../fonts/Neue-haas/display-bold-75.woff2) format("woff2"), url(../fonts/Neue-haas/display-bold-75.woff) format("woff"), url(../fonts/Neue-haas/display-bold-75.ttf) format("truetype"), url(../fonts/Neue-haas/display-bold-75.svg) format("svg#display-bold-75");
     font-weight: 700;
     font-style: normal;
     letter-spacing: .025em;
@@ -19,7 +22,7 @@ html {
 @font-face {
     font-family: nhg-text-bold;
     src: url(../fonts/Neue-haas/text-bold-75.eot?#iefix);
-    src: url(../fonts/Neue-haas/text-bold-75.eot?#iefix) format("eot"),url(../fonts/Neue-haas/text-bold-75.woff2) format("woff2"),url(../fonts/Neue-haas/text-bold-75.woff) format("woff"),url(../fonts/Neue-haas/text-bold-75.ttf) format("truetype"),url(../fonts/Neue-haas/text-bold-75.svg) format("svg#text-bold-75");
+    src: url(../fonts/Neue-haas/text-bold-75.eot?#iefix) format("eot"), url(../fonts/Neue-haas/text-bold-75.woff2) format("woff2"), url(../fonts/Neue-haas/text-bold-75.woff) format("woff"), url(../fonts/Neue-haas/text-bold-75.ttf) format("truetype"), url(../fonts/Neue-haas/text-bold-75.svg) format("svg#text-bold-75");
     font-weight: 700;
     font-style: normal;
     letter-spacing: .025em;
@@ -28,7 +31,7 @@ html {
 @font-face {
     font-family: nhg-text-roman;
     src: url(../fonts/Neue-haas/roman-text-55.eot?#iefix);
-    src: url(../fonts/Neue-haas/roman-text-55.eot?#iefix) format("eot"),url(../fonts/Neue-haas/roman-text-55.woff2) format("woff2"),url(../fonts/Neue-haas/roman-text-55.woff) format("woff"),url(../fonts/Neue-haas/roman-text-55.ttf) format("truetype"),url(../fonts/Neue-haas/roman-text-55.svg) format("svg#roman-text-55");
+    src: url(../fonts/Neue-haas/roman-text-55.eot?#iefix) format("eot"), url(../fonts/Neue-haas/roman-text-55.woff2) format("woff2"), url(../fonts/Neue-haas/roman-text-55.woff) format("woff"), url(../fonts/Neue-haas/roman-text-55.ttf) format("truetype"), url(../fonts/Neue-haas/roman-text-55.svg) format("svg#roman-text-55");
     font-weight: 400;
     font-style: normal;
     letter-spacing: .025em;
@@ -37,7 +40,7 @@ html {
 @font-face {
     font-family: nhg-text-italic;
     src: url(../fonts/Neue-haas/text-italic-56.eot?#iefix);
-    src: url(../fonts/Neue-haas/text-italic-56.eot?#iefix) format("eot"),url(../fonts/Neue-haas/text-italic-56.woff2) format("woff2"),url(../fonts/Neue-haas/text-italic-56.woff) format("woff"),url(../fonts/Neue-haas/text-italic-56.ttf) format("truetype"),url(../fonts/Neue-haas/text-italic-56.svg) format("svg#text-italic-56");
+    src: url(../fonts/Neue-haas/text-italic-56.eot?#iefix) format("eot"), url(../fonts/Neue-haas/text-italic-56.woff2) format("woff2"), url(../fonts/Neue-haas/text-italic-56.woff) format("woff"), url(../fonts/Neue-haas/text-italic-56.ttf) format("truetype"), url(../fonts/Neue-haas/text-italic-56.svg) format("svg#text-italic-56");
     font-weight: 400;
     font-style: italic;
     letter-spacing: .025em;
@@ -45,12 +48,13 @@ html {
 
 body {
     background: #F2F2F2;
-    font-family: Arial,sans-serif,Helvetica;
+    font-family: Arial, sans-serif, Helvetica;
     height: 100%;
     margin-bottom: 8em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 
 /*colors*/
 
@@ -58,7 +62,9 @@ body {
     background-color: #cd040b;
 }
 
- /*background grays*/
+
+/*background grays*/
+
 .bg_gray1 {
     background-color: #e4e5e3;
 }
@@ -66,6 +72,7 @@ body {
 .bg_gray {
     background-color: #f6f6f6;
 }
+
 
 /*functional grays*/
 
@@ -78,12 +85,13 @@ body {
 }
 
 light_gray {
-   background-color: #959595; 
+    background-color: #959595;
 }
 
 .lighter_gray {
     background-color: #cccccc;
 }
+
 
 /*ui colors*/
 
@@ -102,6 +110,7 @@ light_gray {
 .link_h {
     background-color: #00478e;
 }
+
 
 /*pops of color*/
 
@@ -123,6 +132,7 @@ light_gray {
 
 
 /*secondary colors*/
+
 .green {
     background-color: #e9f8e9;
 }
@@ -139,31 +149,75 @@ light_gray {
     background-color: #fef0e8;
 }
 
-.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
-    font-family: nhg-display-bold,arial,sans-serif;
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: nhg-display-bold, arial, sans-serif;
     letter-spacing: .025em;
 }
 
-.h1 button,.h1 small,.h2 button,.h2 small,.h3 button,.h3 small,.h4 button,.h4 small,.h5 button,.h5 small,.h6 button,.h6 small,h1 button,h1 small,h2 button,h2 small,h3 button,h3 small,h4 button,h4 small,h5 button,h5 small,h6 button,h6 small {
-    font-family: Arial,sans-serif,Helvetica;
+.h1 button,
+.h1 small,
+.h2 button,
+.h2 small,
+.h3 button,
+.h3 small,
+.h4 button,
+.h4 small,
+.h5 button,
+.h5 small,
+.h6 button,
+.h6 small,
+h1 button,
+h1 small,
+h2 button,
+h2 small,
+h3 button,
+h3 small,
+h4 button,
+h4 small,
+h5 button,
+h5 small,
+h6 button,
+h6 small {
+    font-family: Arial, sans-serif, Helvetica;
 }
 
-.h1,.h2,.h3,h1,h2,h3 {
+.h1,
+.h2,
+.h3,
+h1,
+h2,
+h3 {
     margin-top: 0;
     margin-bottom: .75em;
 }
 
-.h1,h1 {
+.h1,
+h1 {
     font-size: 21px;
     line-height: 25px;
 }
 
-.h2,.h3,h2,h3 {
+.h2,
+.h3,
+h2,
+h3 {
     font-size: 18px;
     line-height: 22px;
 }
 
-.h4,h4 {
+.h4,
+h4 {
     font-size: 16px;
     line-height: 20px;
 }
@@ -180,7 +234,7 @@ light_gray {
     top: 0;
     left: 0;
     padding-left: 3%;
-    padding-right:2%;
+    padding-right: 2%;
     margin: -1% 0% 0% -2%
 }
 
@@ -192,12 +246,11 @@ light_gray {
 
 .timer-box {
     height: 162px;
-    margin-top:3%;
-    
+    margin-top: 3%;
 }
 
 .timer {
-    font-size:81px;
+    font-size: 81px;
     position: absolute;
     line-height: 162px;
     text-align: center;
@@ -207,20 +260,16 @@ light_gray {
     margin-right: auto;
     color: #cd040b;
     z-index: 1;
-    
-    
 }
 
 .timer-box2 {
     height: 162px;
     width: 162px;
-    margin-top:-1%;
-    
-    
+    margin-top: -1%;
 }
 
 .timer2 {
-    font-size:81px;
+    font-size: 81px;
     position: absolute;
     line-height: 162px;
     text-align: center;
@@ -230,8 +279,6 @@ light_gray {
     margin-right: auto;
     color: #cd040b;
     z-index: 1;
-    
-    
 }
 
 #players {
@@ -243,29 +290,16 @@ light_gray {
     height: 100px;
     width: 100px;
     background-color: #959595;
-    margin-top:15px;
+    margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .score {
     padding: 2%;
-    min-height:536px;
+    min-height: 536px;
     min-width: 1015px;
     display: table;
-}
-
-.score_avatar {
-    border-radius: 50%;
-    height: 150px;
-    width: 150px;
-    background-color: #959595;
-    margin-top:15px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: -75px;
-    z-index: 10;
-    position:relative;
 }
 
 .name {
@@ -279,154 +313,116 @@ light_gray {
     border-width: 1px;
 }
 
-
-
-.first, .second, .third, .fourth, .fifth {
-    position: absolute;
-    bottom: 7.6%;
-    
-    
-    
-}
-
-
-
-.score_bar .points h1 {
-    color: #fff;
-    text-align: center;
-    padding-top: 95px;
-    font-size: 3em;
-    position: relative;
-    
-}
-
-
-.score_name p {
-    font-size: 1.4em;
-    text-align: center;
-    font-weight: bold;
-}
-
-
-.score_bar {
-    min-height: 150px;
-    min-width: 170px;
-}
-
-/*to show how it would look with different scores*/
-.score_bar2 {
-    min-height: 180px;
-    min-width: 170px;
-}
-
 .spinner {
     z-index: -1;
-  -webkit-animation: rotator 1.4s linear infinite;
-          animation: rotator 1.4s linear infinite;
+    -webkit-animation: rotator 1.4s linear infinite;
+    animation: rotator 1.4s linear infinite;
 }
 
 @-webkit-keyframes rotator {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(270deg);
-            transform: rotate(270deg);
-  }
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+    }
 }
 
 @keyframes rotator {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(270deg);
-            transform: rotate(270deg);
-  }
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+    }
 }
+
 .path {
-  stroke-dasharray: 187;
-  stroke-dashoffset: 0;
-  -webkit-transform-origin: center;
-          transform-origin: center;
-  -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-          animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+    stroke-dasharray: 187;
+    stroke-dashoffset: 0;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+    animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
 }
 
 @-webkit-keyframes colors {
-  0% {
-    stroke: #82CEAC;
-  }
-  25% {
-    stroke: #ABE0F9;
-  }
-  50% {
-    stroke: #FBD362;
-  }
-  75% {
-    stroke: #F9B295;
-  }
-  100% {
-    stroke: #C90000;
-  }
+    0% {
+        stroke: #82CEAC;
+    }
+    25% {
+        stroke: #ABE0F9;
+    }
+    50% {
+        stroke: #FBD362;
+    }
+    75% {
+        stroke: #F9B295;
+    }
+    100% {
+        stroke: #C90000;
+    }
 }
 
 @keyframes colors {
-  0% {
-    stroke: #82CEAC;
-  }
-  25% {
-    stroke: #ABE0F9;
-  }
-  50% {
-    stroke: #FBD362;
-  }
-  75% {
-    stroke: #F9B295;
-  }
-  100% {
-    stroke: #C90000;
-  }
+    0% {
+        stroke: #82CEAC;
+    }
+    25% {
+        stroke: #ABE0F9;
+    }
+    50% {
+        stroke: #FBD362;
+    }
+    75% {
+        stroke: #F9B295;
+    }
+    100% {
+        stroke: #C90000;
+    }
 }
+
 @-webkit-keyframes dash {
-  0% {
-    stroke-dashoffset: 187;
-  }
-  50% {
-    stroke-dashoffset: 46.75;
-    -webkit-transform: rotate(135deg);
-            transform: rotate(135deg);
-  }
-  100% {
-    stroke-dashoffset: 187;
-    -webkit-transform: rotate(450deg);
-            transform: rotate(450deg);
-  }
+    0% {
+        stroke-dashoffset: 187;
+    }
+    50% {
+        stroke-dashoffset: 46.75;
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: 187;
+        -webkit-transform: rotate(450deg);
+        transform: rotate(450deg);
+    }
 }
+
 @keyframes dash {
-  0% {
-    stroke-dashoffset: 187;
-  }
-  50% {
-    stroke-dashoffset: 46.75;
-    -webkit-transform: rotate(135deg);
-            transform: rotate(135deg);
-  }
-  100% {
-    stroke-dashoffset: 187;
-    -webkit-transform: rotate(450deg);
-            transform: rotate(450deg);
-  }
+    0% {
+        stroke-dashoffset: 187;
+    }
+    50% {
+        stroke-dashoffset: 46.75;
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+    }
+    100% {
+        stroke-dashoffset: 187;
+        -webkit-transform: rotate(450deg);
+        transform: rotate(450deg);
+    }
 }
 
 .question {
     padding: 2%;
-    max-height:536px;
+    max-height: 536px;
     min-width: 715px;
     margin-right: -20px;
-    
 }
 
 .question h1 {
@@ -441,26 +437,28 @@ light_gray {
 }
 
 .scale {
-    
-    -ms-transform: scale(0.75,0.75); /* IE 9 */
-    -webkit-transform: scale(0.75,0.75); /* Safari */
-    transform: scale(0.65,0.65) translate(-20%,-20%);
-    
-    
-   
+    -ms-transform: scale(0.75, 0.75);
+    /* IE 9 */
+    -webkit-transform: scale(0.75, 0.75);
+    /* Safari */
+    transform: scale(0.65, 0.65) translate(-20%, -20%);
 }
+
+
 /* Justin */
+
 .answers {
     min-height: 1;
     vertical-align: middle;
     margin-left: -1px;
-    min-height:536px;
+    min-height: 536px;
     padding-top: 2%;
-    
 }
+
 .answer_radio {
-  display: none !important;
+    display: none !important;
 }
+
 .answer {
     font-size: 36px;
     color: #FFFFFF;
@@ -470,49 +468,60 @@ light_gray {
     max-height: 226px;
     min-width: 226px;
     margin-top: 3%;
-    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.12), 0px 2px 2px 0px rgba(0,0,0,0.24);
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
     border-radius: 3px;
     display: table;
 }
 
 .answer p {
-  display: table-cell; 
-  vertical-align: middle; 
-  text-align: center; 
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
+
 .answer:nth-of-type(1) {
     background: #aadffa;
 }
+
 .answer:nth-of-type(2) {
-  background: #fbd55b;
+    background: #fbd55b;
 }
+
 .answer:nth-of-type(3) {
-  background: #80cfab;
+    background: #80cfab;
 }
+
 .answer:nth-of-type(4) {
-  background: #fab393;
+    background: #fab393;
 }
+
 .answer:hover {
-  box-shadow: inset 0 0 0 150px rgba(0,0,0,0.3) ;
-  cursor: pointer;
+    box-shadow: inset 0 0 0 150px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
+
 .answer_radio:checked + .answer {
-  background-color: #dddddd;
-  border-radius: 3px;
+    background-color: #dddddd;
+    border-radius: 3px;
 }
+
 #question_number {
-  text-align: right;
-  font-size: 1.3em;
-  font-weight: 800;
+    text-align: right;
+    font-size: 1.3em;
+    font-weight: 800;
 }
+
 #score {
-  text-align: right;
-  font-size: 0.8em;
-  font-weight: 800;
+    text-align: right;
+    font-size: 0.8em;
+    font-weight: 800;
 }
+
 .no_score {
-  display: none;
+    display: none;
 }
+
+
 /*.question {
   padding-left: 1.4em;
   padding-right: 1.4em;
@@ -520,68 +529,126 @@ light_gray {
   padding-top: 1.2em;
   padding-bottom: 8em;
 }*/
+
 .question h2 {
-  font-size: 1.4em;
-  font-weight: 800;
-  line-height: 1.5em;
+    font-size: 1.4em;
+    font-weight: 800;
+    line-height: 1.5em;
 }
+
 .question h2.show_answer {
-  font-weight: 600;
+    font-weight: 600;
 }
+
 .question h2 span {
-  font-weight: 800;
+    font-weight: 800;
 }
+
 .rotate {
-  transform: rotate(270deg);
-  display: inline-block;
-  font-size: .5em;
+    transform: rotate(270deg);
+    display: inline-block;
+    font-size: .5em;
 }
+
 .chart rect {
-  stroke: white;
-  fill: red;
+    stroke: white;
+    fill: red;
 }
+
 .overlay_message {
-  display: none;
+    display: none;
 }
+
 .avatar {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 .avatar:hover {
-  color: red;
-  background-color: red;
+    color: red;
+    background-color: red;
 }
+
 .taken {
-  opacity: .1;
-  cursor: no-drop;
+    opacity: .1;
+    cursor: no-drop;
 }
 
 .correct {
     padding: 2%;
-    min-height:536px;
+    min-height: 536px;
     max-width: 1015px;
     display: table;
-    
 }
+
 .correct h1 {
-    display: table-cell; 
-  vertical-align: middle; 
+    display: table-cell;
+    vertical-align: middle;
     min-height: inherit;
     font-size: 72px;
     color: #FFFFFF;
     line-height: 74px;
 }
 
+
 /* Leaderboard CSS */
 
 .leaderboard {
-    border-style: solid;
-    border-color: red;
-    border-width: -1px;
-    height:100vh;
+    height: 100vh;
     width: 100vw;
     padding: 2% 0;
-    -webkit-box-shadow: inset 10px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: inset 10px 10px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: inset 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
+.first,
+.second,
+.third,
+.fourth,
+.fifth {
+    position: absolute;
+    bottom: 7.6%;
+}
+
+.score_avatar {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    background-color: #959595;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -75px;
+    z-index: 10;
+    position: relative;
+}
+
+.score_avatar img {
+    border-radius: 50%;
+    height: inherit;
+}
+
+.score_bar .points h1 {
+    color: #fff;
+    text-align: center;
+    padding-top: 95px;
+    font-size: 3em;
+    margin-bottom: -1px;
+    position: relative;
+}
+
+.score_name p {
+    font-size: 1.4em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.score_bar {
+    min-height: 150px;
+    min-width: 170px;
+}
+
+
+/*to show how it would look with different scores*/
+
+.score_bar2 {
+    min-height: 180px;
+    min-width: 170px;
+}
