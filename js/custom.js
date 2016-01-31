@@ -35,7 +35,7 @@ var questions = [
     "explanation": "I bet you can't prove otherwise."
 }, {
     "text": "Which of the following choices is not a real answer?",
-    "options": ["a", "b", "c", "d", "efghijklmnopqrstuvwxyz"],
+    "options": ["a", "b", "c", "d"],
     "answer": "none",
     "explanation": "This question will always be answered wrong.  You are welcome."
 }];
@@ -86,6 +86,7 @@ var questions = [
         startGame = function() {
                 already = function (data) { if (!data) { console.log('startiong now'); return {time: Firebase.ServerValue.TIMESTAMP}; } else { timeSync(); console.log('started already'); } };
                 game.DB.child('begin').transaction(already);
+
                // timeSync();
           },
         showResults = function() {
@@ -157,7 +158,8 @@ var questions = [
             }
         },
         gradeQuestion = function() {
-            var chosenAnswer = $('.answer_radio:checked + .answer').text(),
+            $('#answers').removeClass('fadeInRight').addClass('fadeOutRight');
+            var chosenAnswer = $(this).find('#choice').text(),
                 correctAnswer = questions[counter-1].answer,
                 explanation = questions[counter-1].explanation,
                 correct = chosenAnswer === correctAnswer,
@@ -177,15 +179,17 @@ var questions = [
             }
         },
         nextQuestion = function() {
+            console.log(answerTemplate);
+            if (game.player.substring(0,6) == 'avatar') { $("#playing").show(); $("#waiting").hide(); }
+            else { $(".leaderboard").show(); $("#waiting").hide(); $("#scoring").show(); }
             var questionDetails = questions[counter];
             questionNumber.text((counter+1) + ' of ' + questions.length);
             questionTitle.text(questionDetails.text).removeClass('show_answer');
             answersBlock.empty();
             actionButton.text('Answer');
             for (var i = 0; i < questionDetails.options.length; i++) {
-                var newQuestion = answerTemplate
-                  .replace(/{{id}}/g, 'answer' + i)
-                  .replace('{{text}}', questionDetails.options[i]);
+                var newQuestion = $('#answers').find('#answer' + i + ' #choice')
+                  .text(questionDetails.options[i]).addClass('fadeInRight scale');
                 answersBlock.append($(newQuestion));
             }
             counter++;
@@ -243,7 +247,7 @@ var questions = [
             });
         },
         updatePlayer = function(avatar, key, value) {
-          if (avatar.split('_').length === 2) {
+          if (avatar.substring(0,6) === 'avatar') {
             if (key == 'time') {
                 $('#' + avatar).addClass('taken');
                 // $('#' + avatar).hasClass('taken') ? $('#' + avatar).removeClass('taken') :
@@ -253,6 +257,7 @@ var questions = [
             }
             if (key == 'score') {
                 console.log(avatar + ' has ' + value)
+                $('#' + avatar.substr(-1)).find('h1').text(value);
                  //remove elem.children('.avatar').removeClass('taken'), elem.children('.name').html('<h2>Player ' + avatar.substr(-1) +'</h2>');
             }
          }
@@ -277,9 +282,10 @@ var questions = [
                 // console.log(children.key() + ' ' + game.player + timeLeft);
                 // if (children.key() === "start" && timeLeft < 0) { startGame(); console.log('started'); }
             game.DB.on('child_removed', function(children) {
-                if (children.key().split('_') === 2) {
+                if (children.key().substring(0,6) === 'avatar') {
                     $('#' + children.key()).removeClass('taken')
                         .next().html('<h2>Player ' + children.key().substr(-1) + '</h2>');
+                        if (children.key() == game.player) { game.player = '';}
                 }
                 //children.key() === game.player ? game.player = '' : console.log('?');
                 console.log('removed', children.key().split('_') + ' ', children.val());
@@ -328,6 +334,7 @@ var questions = [
 
         $('#reset').click(resetGame);
         $('#start').click(startGame);
+        $('.answer').click(gradeQuestion);
         $('#controls_help').click(controlsHelp);
         $('.answers').click(dispatchAction);
         $('#submit').click(dispatchAction);

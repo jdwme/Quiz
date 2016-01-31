@@ -23,7 +23,7 @@
      <a href="#" id="start">Start</a> | <a href="#" id="reset">Reset</a>
       </div>
       </div>
-    <div class="main">
+    <div class="main" id="waiting">
     
         <div class="row">
             <div class="col-md-10">
@@ -130,45 +130,120 @@
             </div>
         </div>
     </div>
-    <div class="main">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="status">
-                    <div id="question_number">1 of 10</div>
-                    <div id="score" class="no_score"></div>
+
+
+        <div class="container-fluid" id="playing" style="display:none;">
+         <div class="row">
+            <!-- when answers slide in, add "scale" to the questions div-->
+                <div class="col-md-7 question">
+
+                    <h1>This is an example of question 1 and how it would initially appear on screen.</h1>
+
+                </div>
+                  <div class="col-md-5 animated" id="answers">
+                    <div class="row">
+                        <div class="col-md-6 answer sky" id="answer0">
+                        <input class="answer_radio" type="radio" value="0">
+                            <p id="choice">{{text}}</p>
+                        </div>
+                        <div class="col-md-6 answer gold" id="answer1">
+                        <input class="answer_radio" type="radio" value="0">
+                           <p id="choice">{{text}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 answer teal" id="answer2">
+                        <input class="answer_radio" type="radio" value="0">
+                            <p id="choice">{{text}}</p>
+                        </div>
+                        <div class="col-md-6 answer salmon" id="answer3">
+                        <input class="answer_radio" type="radio" value="0">
+                            <p id="choice">{{text}}</p>
+                        </div>
+                    </div>
+                    </div>
                 </div>
 
-                <section class="question">
-                    <h2></h2>
-                    <div class="answers">
+                <div class="row">
+                    <div class="timer-box2 col-md-1">
+                        <h1 class="timer2">10</h1>
+                        <svg class="spinner" width="158px" height="158px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                        </svg>
+
                     </div>
-                </section>
-                <section class="controls">
-                    <a href="#" id="submit">Answer</a>
-                    <a href="#" class="mini_controls" id="reset" title="Reset Quiz">
-                        <div class="foundicon-refresh"></div>
-                    </a>
-                    <a href="#" class="mini_controls" id="controls_help" title="Help with keyboard controls">
-                        <div class="foundicon-website"></div>
-                    </a>
-                </section>
-            </div>
-            <div class="overlay_message" id="error_message">Please choose an answer</div>
-            <div class="overlay_message" id="correct_answer">
-                <div class="overlay_message" id="wrong_answer">
-                    <script type="text/template" id="answer_template">
-                        <input class="answer_radio" type="radio" id="{{id}}" name="group" value="{{id}}">
-                        <label class="answer" for="{{id}}">{{text}}</label>
-                    </script>
+                    <div class="col-md-1"><button onclick='nextQuestion()'>next</button></div>
                 </div>
-            </div>
-            <div class="overlay_message" id="controls_message">
-                <h2>Keyboard Controls</h2>
-                <ul>
-                    <li>Up / Down: Change the answer selection</li>
-                    <li>Enter: Submit answer or move to next question</li>
-                </ul>
-                <p>Click or press any key to hide this message.</p>
+
+
+        </div>
+        
+
+     <div class="leaderboard" id="scoring" style="display:none;">
+        <div class="container" style="height:100%;">
+            <div class="row" style="height:100%;">
+                <div class="col-md-1" style="height:100%;"></div>
+                <div class="col-md-2" id="1" style="height:100%;">
+                    <div class="first">
+                        <div class="score_name">
+                            <p>Player 1</p>
+                        </div>
+                        <div class="score_avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/rogie/128.jpg" /></div>
+                        <div class="score_bar teal">
+                            <div class="points">
+                                <h1>100</h1></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" id="2" style="height:100%;">
+                    <div class="first">
+                        <div class="score_name">
+                            <p>Player 2</p>
+                        </div>
+                        <div class="score_avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/jina/128.jpg" /></div>
+                        <div class="score_bar sky">
+                            <div class="points">
+                                <h1>100</h1></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" id="3" style="height:100%;">
+                    <div class="first">
+                        <div class="score_name">
+                            <p>Player 3</p>
+                        </div>
+                        <div class="score_avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/abinav_t/128.jpg" /></div>
+                        <div class="score_bar gold">
+                            <div class="points">
+                                <h1>100</h1></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" id="4" style="height:100%;">
+                    <div class="first">
+                        <div class="score_name">
+                            <p>Player 4</p>
+                        </div>
+                        <div class="score_avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" /></div>
+                        <div class="score_bar salmon">
+                            <div class="points">
+                                <h1>100</h1></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" id="5" style="height:100%;">
+                    <div class="first">
+                        <div class="score_name">
+                            <p>Player 5</p>
+                        </div>
+                        <div class="score_avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/uxceo/128.jpg" /></div>
+                        <div class="score_bar bt_red">
+                            <div class="points">
+                                <h1>100</h1></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1" style="height:100%;"></div>
             </div>
         </div>
     </div>
