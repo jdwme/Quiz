@@ -47,7 +47,7 @@ var questions = [
         timeLeft = 0,
         gameOver = false,
         resetCounter = 0,
-        timerCounter = 10,
+        timerCounter = 15,
         timerStart = false,
         player = $("#player"),
         scoreNode = $('#score'),
@@ -158,13 +158,12 @@ var questions = [
             }
         },
         gradeQuestion = function() {
-            $('#answers').removeClass('fadeInRight').addClass('fadeOutRight');
             var chosenAnswer = $(this).find('#choice').text(),
                 correctAnswer = questions[counter-1].answer,
                 explanation = questions[counter-1].explanation,
                 correct = chosenAnswer === correctAnswer,
-                correctText = correct ? 'Correct! ' : 'Incorrect! The correct answer is: ';
-
+                correctText = correct ? 'check ' : 'x ';
+            isPlaying() ? $('#answers').removeClass('fadeInRight').addClass('fadeOutRight') : $("#questionAnswer #text").text(correctAnswer), $("#questionAnswer").addClass("animated fadeInRight").show(), $("#playing").hide();
             results.answers.push(correct);
             results.currentScore = calculateScore(results.answers);
                             pushScore();
@@ -178,10 +177,20 @@ var questions = [
                 actionButton.text('Next question');
             }
         },
+        isPlaying = function() {
+            return game.player.substring(0,6) === 'avatar' ? true : false;
+        },
         nextQuestion = function() {
-            console.log(answerTemplate);
-            if (game.player.substring(0,6) == 'avatar') { $("#playing").show(); $("#waiting").hide(); }
-            else { $(".leaderboard").show(); $("#waiting").hide(); $("#scoring").show(); }
+            if (isPlaying()) {
+                $("#answers").removeClass('fadeOutRight').addClass("fadeInRight");
+                $("#playing").show(); $("#waiting").hide();
+             }
+            else if (!isPlaying()) {
+                $("#answers").removeClass('fadeOutRight').addClass("fadeInRight");
+                $("#playing").show();
+                $("#waiting").hide();
+             /*$("#scoring").show();*/
+            }
             var questionDetails = questions[counter];
             questionNumber.text((counter+1) + ' of ' + questions.length);
             questionTitle.text(questionDetails.text).removeClass('show_answer');
@@ -224,7 +233,23 @@ var questions = [
                 time = timeShot.child(game.player + '/time').val();
                 if (time) {                
                     countDown = function() {
-                        console.log('countdown');
+                        
+                        switch (timeLeft) {
+                            case 14: $(".waiting").text("Ready?"); break;
+                            case 13: $(".waiting").text("Ready?"); break;
+                            case 12: $(".waiting").text("Ready?"); break;
+                            case 11: $(".waiting").text("Ready!"); break;
+                            case 10: $(".waiting").text("Ready, Set."); break;
+                            case 9: $(".waiting").text("Ready, Set."); break;
+                            case 8: $(".waiting").text("Ready, Set."); break;
+                            case 7: $(".waiting").text("Ready, Set."); break;
+                            case 6: $(".waiting").text("Ready, Set.."); break;
+                            case 5: $(".waiting").text("Ready, Set..."); break;
+                            case 4: $(".waiting").text("Ready, Set.."); break;
+                            case 3: $(".waiting").text("Ready...Set.."); break;
+                            case 2: $(".waiting").text("Ready... Set...."); break;
+                            case 1: $(".waiting").text("Ready? Set, GO!"); break;
+                        }
                         if (timeLeft <= 0) {
                             clearTimeout(timerId);
                             $('h1.timer').hide();
@@ -330,11 +355,11 @@ var questions = [
                     $('#answer' + (answerCount - 1)).prop('checked', true);
                 }
             }
-        };
+        }, retur = function() { return; };
 
         $('#reset').click(resetGame);
         $('#start').click(startGame);
-        $('.answer').click(gradeQuestion);
+        $('.answer').click( isPlaying() ? gradeQuestion : retur );
         $('#controls_help').click(controlsHelp);
         $('.answers').click(dispatchAction);
         $('#submit').click(dispatchAction);
