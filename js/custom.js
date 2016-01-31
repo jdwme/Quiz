@@ -158,17 +158,17 @@ gradeQuestion = function() {
     correctAnswer = questions[counter-1].answer,
     explanation = questions[counter-1].explanation,
     correct = chosenAnswer === correctAnswer,
-    correctText = correct ? './' : 'X';
+    theClass = correct ? 'fa fa-check fa-5x green' : 'fa fa-times fa-5x red-primary';
     correctPoints = correct ? '100' : '0';
-    if (isPlaying()) {
+    if (isPlaying() && !$("#answerQuestion").is(':visible')) {
         $("#playing").hide();
         $("#answerQuestion").find("#answered").text(chosenAnswer);
-        $("#answerQuestion").find(".icon").text(correctText)
-        $("#answerQuestion").find(".points").text(correctPoints + ' points.')
+        $("#answerQuestion").find(".icon").removeClass().addClass(theClass);
+        $("#answerQuestion").find(".points").text(correctPoints + ' points.');
         $("#answerQuestion").addClass("animated fadeInLeft").show();
 
     }
-    else {
+    else if (!isPlaying()) {
         $("#questionAnswer #text").text(correctAnswer);
         $("#questionAnswer").addClass("animated fadeInRight").show();
         $("#playing").hide();
@@ -176,10 +176,6 @@ gradeQuestion = function() {
     results.answers.push(correct);
     results.currentScore = calculateScore(results.answers);
     pushScore();
-    scoreNode.removeClass('no_score')
-    .text(results.currentScore + ' correct');
-    questionTitle.html(correctText + wrap('span', correctAnswer)).addClass('show_answer');
-    answersBlock.text(explanation);
     if (counter === questions.length) {
         $("#scoring").show();
         $("#answers").hide();
@@ -188,16 +184,20 @@ gradeQuestion = function() {
         $("#questionAnswer").hide();
         clearTimeout(timerId);
     }
+    scoreNode.removeClass('no_score')
+    .text(results.currentScore + ' correct');
+    /*questionTitle.html(correctText + wrap('span', correctAnswer)).addClass('show_answer');*/
+    answersBlock.text(explanation);
 },
 isPlaying = function() {
     return game.player.substring(0,6) == 'avatar' ? true : false;
 },
 nextQuestion = function() {
     if (isPlaying()) {
-        $("#answerQuestion").addClass('animated fadeOutLeft');
+        $("#answerQuestion").removeClass('animated fadeInLeft').hide();
         $("#answers").removeClass('fadeOutRight').addClass("fadeInRight");
         $("#playing").show(); $("#waiting").hide();
-        $("#questionAnswer").removeClass('animated fadeOutLeft fadeInLeft').hide();
+        //$("#questionAnswer").removeClass('animated fadeInLeft');
         timeSync2();
     }
     else if (!isPlaying()) {
@@ -207,6 +207,7 @@ nextQuestion = function() {
         timeSync2();
         /*$("#scoring").show();*/
     }
+    $("#questionAnswer").hide();
     var questionDetails = questions[counter];
     questionNumber.text((counter+1) + ' of ' + questions.length);
     questionTitle.text(questionDetails.text).removeClass('show_answer');
@@ -214,7 +215,7 @@ nextQuestion = function() {
     actionButton.text('Answer');
     for (var i = 0; i < questionDetails.options.length; i++) {
         var newQuestion = $('#answers').find('#answer' + i + ' #choice')
-        .text(questionDetails.options[i]).addClass('fadeInRight scale');
+            .text(questionDetails.options[i]).addClass('fadeInRight scale');
         answersBlock.append($(newQuestion));
     }
     counter++;
@@ -292,20 +293,22 @@ timeSync = function() {
 timeSync2 = function() {
     countDown2 = function() {
         console.log('countdown2');
-        if (timeOut < 0) {
-            console.log('timeout!')
+        if (timeOut <= 0) {
+            gradeQuestion();
             clearTimeout(timerId2);
-            if (!isPlaying()) { gradeQuestion(); }
-            timerId2 = setTimeout(nextQuestion, 9500);
+            timerId2 = setTimeout(nextQuestion, 5000);
+            $('.timer-box2').hide();
         }
+        $('.timer-box2').show();
         $('.timer2').text(timeOut);
         timeOut--
     }
     timeOut = waitTime;
+
     timerId2 = setInterval(countDown2, 1000);
 },
 updatePlayer = function(avatar, key, value) {
-  if (isPlaying()) {
+    if (avatar.substring(0,6) === 'avatar') {
     if (key == 'time') {
         $('#' + avatar).addClass('taken');
                 /* $('#' + avatar).hasClass('taken') ? $('#' + avatar).removeClass('taken') : */
@@ -319,7 +322,7 @@ updatePlayer = function(avatar, key, value) {
             /*remove elem.children('.avatar').removeClass('taken'), elem.children('.name').html('<h2>Player ' + avatar.substr(-1) +'</h2>');*/
         }
     }
-    if (avatar == 'begin' && !timerStart) {
+    else if (avatar == 'begin' && !timerStart) {
         console.log('start ?');
         timeSync();
     }
