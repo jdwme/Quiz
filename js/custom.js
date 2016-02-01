@@ -162,7 +162,7 @@ gradeQuestion = function() {
     correctAnswer = questions[counter-1].answer,
     explanation = questions[counter-1].explanation,
     correct = chosenAnswer === correctAnswer,
-    iconClass = correct ? 'correct' : 'incorrect';
+    iconClass = correct ? 'right' : 'wrong';
     /*
     if the variable correct equals true then make answerQuestionClass = main teal animated fadeInLeft,
     otherwise if correct equals false, return main sky animated fadeInLeft.

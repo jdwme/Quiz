@@ -9,6 +9,7 @@ html {
     font-size: 1em;
     line-height: 1.4;
 }
+
 @font-face {
     font-family: nhg-display-bold;
     src: url(../fonts/Neue-haas/display-bold-75.eot?#iefix);
@@ -17,6 +18,7 @@ html {
     font-style: normal;
     letter-spacing: .025em;
 }
+
 @font-face {
     font-family: nhg-text-bold;
     src: url(../fonts/Neue-haas/text-bold-75.eot?#iefix);
@@ -25,6 +27,7 @@ html {
     font-style: normal;
     letter-spacing: .025em;
 }
+
 @font-face {
     font-family: nhg-text-roman;
     src: url(../fonts/Neue-haas/roman-text-55.eot?#iefix);
@@ -33,6 +36,7 @@ html {
     font-style: normal;
     letter-spacing: .025em;
 }
+
 @font-face {
     font-family: nhg-text-italic;
     src: url(../fonts/Neue-haas/text-italic-56.eot?#iefix);
@@ -41,14 +45,17 @@ html {
     font-style: italic;
     letter-spacing: .025em;
 }
+
 body {
     background: #F2F2F2;
     font-family: Arial, sans-serif, Helvetica;
     height: 100%;
     margin-bottom: 8em;
+    overflow: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 
 /*colors*/
 
@@ -56,74 +63,93 @@ body {
     background-color: #cd040b;
 }
 
+
 /*background grays*/
 
 .bg_gray1 {
     background-color: #e4e5e3;
 }
+
 .bg_gray {
     background-color: #f6f6f6;
 }
+
 
 /*functional grays*/
 
 .charcoal {
     background-color: #333333;
 }
+
 .gray {
     background-color: #4b4b4b;
 }
+
 light_gray {
     background-color: #959595;
 }
+
 .lighter_gray {
     background-color: #cccccc;
 }
+
 
 /*ui colors*/
 
 .bt_red {
     background-color: #a80309;
 }
+
 .bt_red_pressed {
     background-color: #990308;
 }
+
 .link_a {
     background-color: #0066cc;
 }
+
 .link_h {
     background-color: #00478e;
 }
+
 
 /*pops of color*/
 
 .teal {
     background-color: #82ceac;
 }
+
 .sky {
     background-color: #abe0f9;
 }
+
 .gold {
     background-color: #fbd362;
 }
+
 .salmon {
     background-color: #f9b295;
 }
+
 
 /*secondary colors*/
 
 .green {
     background-color: #e9f8e9;
 }
+
 .blue {
     background-color: #e8f6fe;
 }
+
 .yellow {
     background-color: #feffe4;
 }
+
 .orange {
     background-color: #fef0e8;
 }
+
 .h1,
 .h2,
 .h3,
@@ -139,6 +165,7 @@ h6 {
     font-family: nhg-display-bold, arial, sans-serif;
     letter-spacing: .025em;
 }
+
 .h1 button,
 .h1 small,
 .h2 button,
@@ -165,6 +192,7 @@ h6 button,
 h6 small {
     font-family: Arial, sans-serif, Helvetica;
 }
+
 .h1,
 .h2,
 .h3,
@@ -174,11 +202,13 @@ h3 {
     margin-top: 0;
     margin-bottom: .75em;
 }
+
 .h1,
 h1 {
     font-size: 21px;
     line-height: 25px;
 }
+
 .h2,
 .h3,
 h2,
@@ -186,16 +216,19 @@ h3 {
     font-size: 18px;
     line-height: 22px;
 }
+
 .h4,
 h4 {
     font-size: 16px;
     line-height: 20px;
 }
+
 .center {
     margin-left: auto;
     margin-right: auto;
     max-width: 60%;
 }
+
 .main {
     min-height: 1000px;
     min-width: 100%;
@@ -205,15 +238,18 @@ h4 {
     padding-right: 2%;
     margin: -1% 0% 0% -2%
 }
+
 .waiting {
     font-size: 64px;
     color: #cd040b;
     line-height: 81px;
 }
+
 .timer-box {
     height: 162px;
     margin-top: 3%;
 }
+
 .timer {
     font-size: 81px;
     position: absolute;
@@ -226,11 +262,13 @@ h4 {
     color: #cd040b;
     z-index: 1;
 }
+
 .timer-box2 {
     height: 162px;
     width: 162px;
     margin-top: -1%;
 }
+
 .timer2 {
     font-size: 81px;
     position: absolute;
@@ -243,9 +281,11 @@ h4 {
     color: #cd040b;
     z-index: 1;
 }
+
 #players {
     margin-top: 100px;
 }
+
 .avatar {
     border-radius: 50%;
     height: 100px;
@@ -255,21 +295,25 @@ h4 {
     margin-left: auto;
     margin-right: auto;
 }
+
 .score {
     padding: 2%;
     min-height: 536px;
     min-width: 1015px;
     display: table;
 }
+
 .name {
     margin-top: 15px;
     text-align: center;
 }
+
 .border {
     border-style: solid;
     border-color: #333;
     border-width: 1px;
 }
+
 .spinner {
     width: 158px;
     height: 158px;
@@ -277,6 +321,7 @@ h4 {
     -webkit-animation: rotator 1.4s linear infinite;
     animation: rotator 1.4s linear infinite;
 }
+
 @-webkit-keyframes rotator {
     0% {
         -webkit-transform: rotate(0deg);
@@ -287,6 +332,7 @@ h4 {
         transform: rotate(270deg);
     }
 }
+
 @keyframes rotator {
     0% {
         -webkit-transform: rotate(0deg);
@@ -297,6 +343,7 @@ h4 {
         transform: rotate(270deg);
     }
 }
+
 .path {
     stroke-dasharray: 187;
     stroke-dashoffset: 0;
@@ -305,6 +352,7 @@ h4 {
     -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
     animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
 }
+
 @-webkit-keyframes colors {
     0% {
         stroke: #82CEAC;
@@ -322,6 +370,7 @@ h4 {
         stroke: #C90000;
     }
 }
+
 @keyframes colors {
     0% {
         stroke: #82CEAC;
@@ -339,6 +388,7 @@ h4 {
         stroke: #C90000;
     }
 }
+
 @-webkit-keyframes dash {
     0% {
         stroke-dashoffset: 187;
@@ -354,6 +404,7 @@ h4 {
         transform: rotate(450deg);
     }
 }
+
 @keyframes dash {
     0% {
         stroke-dashoffset: 187;
@@ -369,21 +420,25 @@ h4 {
         transform: rotate(450deg);
     }
 }
+
 .question {
     padding: 2%;
     max-height: 536px;
     min-width: 715px;
     margin-right: -20px;
 }
+
 .question h1 {
     color: #333;
     font-size: 86px;
     line-height: 86px;
 }
+
 .normal {
     margin-left: 5%;
     margin-top: 2%;
 }
+
 .scale {
     -ms-transform: scale(0.75, 0.75);
     /* IE 9 */
@@ -391,6 +446,7 @@ h4 {
     /* Safari */
     transform: scale(0.65, 0.65) translate(-20%, -20%);
 }
+
 
 /* Justin */
 
@@ -401,9 +457,11 @@ h4 {
     min-height: 536px;
     padding-top: 2%;
 }
+
 .answer_radio {
     display: none !important;
 }
+
 .answer {
     font-size: 32px;
     color: #FFFFFF;
@@ -418,99 +476,104 @@ h4 {
     border-radius: 3px;
     display: table;
 }
+
 .answer p {
     display: table-cell;
     vertical-align: middle;
     text-align: left;
     padding: 5%;
 }
+
 .answer:hover {
     box-shadow: inset 0 0 0 150px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
-.correct {
-    display: block;
-    background: url(../graphics/correct.svg) no-repeat;
-    background-size: 226px 226px;
-    background-position: center center;
-}
-.incorrect {
-    display: block;
-    background: url(../graphics/wrong.svg) no-repeat;
-    background-size: 226px 226px;
-    background-position: center center;
-    height: 226px;
-    width: 226px;
-}
+
 #answered {
     text-align: left;
     color: #fff;
     font-size: 2.5em;
     margin: 5%
 }
+
 #icon {
     vertical-align: middle;
     margin: 2% auto;
 }
+
 .points {
     text-align: left;
     color: #fff;
     font-size: 2.5em;
     margin: 5%;
 }
+
 #question_number {
     text-align: right;
     font-size: 1.3em;
     font-weight: 800;
 }
+
 #score {
     text-align: right;
     font-size: 0.8em;
     font-weight: 800;
 }
+
 .no_score {
     display: none;
 }
-question h2 {
+
+.question h2 {
     font-size: 1.4em;
     font-weight: 800;
     line-height: 1.5em;
 }
+
 .question h2.show_answer {
     font-weight: 600;
 }
+
 .question h2 span {
     font-weight: 800;
 }
+
 .rotate {
     transform: rotate(270deg);
     display: inline-block;
     font-size: .5em;
 }
+
 .chart rect {
     stroke: white;
     fill: red;
 }
+
 .overlay_message {
     display: none;
 }
+
 .avatar {
     cursor: pointer;
 }
+
 .avatar:hover {
     color: red;
     background-color: red;
 }
+
 .taken {
     opacity: .1;
     cursor: no-drop;
 }
+
 .correct {
     padding: 2%;
     min-height: 536px;
     max-width: 1015px;
     display: table;
 }
+
 .correct h1 {
     display: table-cell;
     vertical-align: middle;
@@ -520,6 +583,23 @@ question h2 {
     line-height: 74px;
 }
 
+.right {
+    display: block;
+    background: url(../graphics/correct.svg) no-repeat;
+    background-size: 226px 226px;
+    background-position: center center;
+}
+
+.wrong {
+    display: block;
+    background: url(../graphics/wrong.svg) no-repeat;
+    background-size: 226px 226px;
+    background-position: center center;
+    height: 226px;
+    width: 226px;
+}
+
+
 /* Leaderboard CSS */
 
 .leaderboard {
@@ -527,6 +607,7 @@ question h2 {
     width: 100vw;
     padding: 2% 0;
 }
+
 .first,
 .second,
 .third,
@@ -535,6 +616,7 @@ question h2 {
     position: absolute;
     bottom: 7.6%;
 }
+
 .score_avatar {
     border-radius: 50%;
     height: 150px;
@@ -547,10 +629,12 @@ question h2 {
     z-index: 10;
     position: relative;
 }
+
 .score_avatar img {
     border-radius: 50%;
     height: inherit;
 }
+
 .score_bar .points h1 {
     color: #fff;
     text-align: center;
@@ -559,15 +643,22 @@ question h2 {
     margin-bottom: -1px;
     position: relative;
 }
+
 .score_name p {
     font-size: 1.4em;
     text-align: center;
     font-weight: bold;
 }
+
 .score_bar {
     min-height: 150px;
     min-width: 170px;
 }
+
+#question_avatar {
+    display: none;
+}
+
 
 /*to show how it would look with different scores*/
 
@@ -575,11 +666,12 @@ question h2 {
     min-height: 180px;
     min-width: 170px;
 }
+
 @media (max-width: 767px) {
     .waiting {
-    font-size: 32px;
-    color: #cd040b;
-    line-height: 36px;
+        font-size: 32px;
+        color: #cd040b;
+        line-height: 36px;
     }
     .timer {
         font-size: 32px;
@@ -593,18 +685,15 @@ question h2 {
         color: #cd040b;
         z-index: 1;
     }
-    
     .timer-box {
-    height: 95px;
-    margin-top: 3%;
-    margin-left: -115%
+        height: 95px;
+        margin-top: 3%;
+        margin-left: -115%
     }
-    
     .spinner {
         width: 95px;
         height: 95px;
     }
-    
     h1 {
         color: #cd040b;
         font-size: 28px;
@@ -640,14 +729,104 @@ question h2 {
         font-size: 2.5em;
         margin: 5%
     }
+    
+    .question {
+        padding: 2%;
+        max-height: 536px;
+        min-width: 85vw;
+        margin-right: -20px;
+        display: none;
+    }
+    .question h1 {
+        color: #333;
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .answer {
+        font-size: 32px;
+        color: #FFFFFF;
+        line-height: 36px;
+        text-align: center;
+        max-height: 45vw;
+        width: 45vw;
+        margin-top: 3%;
+        box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
+        border-radius: 3px;
+        display: table;
+    }
+    .answer p {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: left;
+        padding: 5%;
+    }
+    #answers {
+        padding-top: 5vh;
+    }
+    .timer-box2 {
+        display: none;
+        height: 95px;
+    }
+    .timer2 {
+        font-size: 32px;
+        position: absolute;
+        line-height: 96px;
+        text-align: center;
+        height: 95px;
+        width: 95px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #cd040b;
+        z-index: 1;
+    }
+    #playing {
+        height: 100vh;
+    }
+    #question_avatar {
+        display: block;
+    }
+    .correct {
+        padding: 2%;
+        min-height: 536px;
+        max-width: 1015px;
+        display: table;
+    }
+    .correct h1 {
+        display: table-cell;
+        vertical-align: middle;
+        min-height: inherit;
+        font-size: 72px;
+        color: #FFFFFF;
+        line-height: 74px;
+    }
+    
     #icon {
         vertical-align: middle;
         margin: 2% auto;
+        height: 40vh;
     }
     .points {
         text-align: left;
         color: #fff;
         font-size: 2.5em;
         margin: 5%;
+    }
+    .right {
+        display: block;
+        background: url(../graphics/correct.svg) no-repeat;
+        background-size: 226px 226px;
+        background-position: center center;
+    }
+    .wrong {
+        display: block;
+        background: url(../graphics/wrong.svg) no-repeat;
+        background-size: 226px 226px;
+        background-position: center center;
+        height: 226px;
+        width: 226px;
+    }
+    
+    #answerQuestion .row .avatar{
+        margin-bottom:10vh;
     }
 }

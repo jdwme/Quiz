@@ -135,31 +135,35 @@
     </div>
 
 
-    <div class="container-fluid" id="playing" style="display:none;">
+    <div class="container-fluid green" id="playing" style="height:100vh; display:none;" >
+        <div class="row" id="question_avatar">
+            <div class="row avatar"></div>
+        </div>
         <div class="row">
             <!-- when answers slide in, add "scale" to the questions div-->
-            <div class="col-md-7 question">
+            <div class="col-md-7 col-xs-12 question">
 
                 <h1>This is an example of question 1 and how it would initially appear on screen.</h1>
 
             </div>
-            <div class="col-md-5 animated" id="answers">
+            
+            <div class="col-md-5 col-xs-12 animated" id="answers">
                 <div class="row">
-                    <div class="col-md-6 answer sky" id="answer0">
+                    <div class="col-md-6 col-xs-6 answer sky" id="answer0">
                         
                         <p id="choice">{{text}}</p>
                     </div>
-                    <div class="col-md-6 answer gold" id="answer1">
+                    <div class="col-md-6 col-xs-6 answer gold" id="answer1">
                         
                         <p id="choice">{{text}}</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 answer teal" id="answer2">
+                    <div class="col-md-6 col-xs-6 answer teal" id="answer2">
                         
                         <p id="choice">{{text}}</p>
                     </div>
-                    <div class="col-md-6 answer salmon" id="answer3">
+                    <div class="col-md-6 col-xs-6 answer salmon" id="answer3">
                         
                         <p id="choice">{{text}}</p>
                     </div>
@@ -189,12 +193,12 @@
             <div class="row avatar"></div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 col-xs-12">
                 <h1 id="answered"></h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 col-xs-12">
                 <div id="icon"></div>
                 <h1 class="points"></h1>
             </div>
@@ -272,12 +276,12 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70.0-2014.11.23/jquery.blockUI.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="http://d3js.org/d3.v2.js"></script>
+    <!--<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://d3js.org/d3.v2.js"></script>-->
     <script src="js/firebase.js"></script>
     <script src="js/custom.js"></script>
     <link rel="stylesheet" href="css/animate.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    
 
     <script>
     </script>
