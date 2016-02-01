@@ -371,7 +371,7 @@ $('.avatar').click(function() {
         game.player = this.id;
         game.DB.child(game.player).child('time').set(Firebase.ServerValue.TIMESTAMP);
         game.DB.child(game.player).onDisconnect().remove();
-        name = prompt('Enter your name or initials.')
+        name = prompt('Enter your name or initials.').substring(0,16);
         name ? $(this).next().attr('id',name).html('<h2>'+ name +'</h2>') : name = 'Player ' + this.id.substr(-1);
         game.DB.child(game.player + '/name').transaction(function(data) { return name });
     }
