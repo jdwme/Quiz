@@ -350,7 +350,7 @@ init = function() {
     game.DB.on('child_removed', function(gZ) {
         if (isPlaying(gZ.key())) {
             $('#'+gZ.key()).removeClass('taken').find('h2').text('Player '+gZ.key().substr(-1));
-            gZ.key() === game.player ? game.player = '' : console.log(gz.key() + ' left the bldg');
+            gZ.key() === game.player ? game.player = '' : console.log(gZ.key() + ' left the bldg');
         }
     });
 },
@@ -376,10 +376,9 @@ $('.avatar').click(function() {
         game.DB.child(game.player + '/name').transaction(function(data) { return name });
     }
 
-    else {         }
+    else {  }
 
 });
 init();
 //jquery add on to add break back to the waiting text http://stackoverflow.com/questions/4535888/jquery-text-and-newlines
-(function() {$.fn.txt=function(text){this.text(text);this.html(this.html().replace(/\n/g,'<br/>'));return this;}})(jQuery);
-//hi jw!
+(function() {$.fn.txt=function(text){this.text(text);this.html(this.html().replace(/\n/g,'<br/>'));return this;}})($);
