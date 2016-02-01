@@ -162,7 +162,7 @@ gradeQuestion = function() {
     correctAnswer = questions[counter-1].answer,
     explanation = questions[counter-1].explanation,
     correct = chosenAnswer === correctAnswer,
-    theClass = correct ? 'fa fa-check fa-5x green' : 'fa fa-times fa-5x red-primary';
+    theClass = correct ? 'correct' : 'incorrect';
     correctPoints = correct ? '100' : '0';
     if (isPlaying() && !$("#answerQuestion").is(':visible')) {
         $("#playing").hide();
@@ -206,7 +206,7 @@ nextQuestion = function() {
     actionButton.text('Answer');
     for (var i = 0; i < questionDetails.options.length; i++) {
         var newQuestion = $('#answers').find('#answer' + i + ' #choice')
-            .text(questionDetails.options[i]).addClass('fadeInRight scale');
+            .text(questionDetails.options[i]).addClass('fadeInRight');
         answersBlock.append($(newQuestion));
     }
     counter++;

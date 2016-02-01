@@ -18,13 +18,16 @@
 
 <body>
 
-    <div class="row">
-     <div class="col-md-10">
-     <a href="#" id="start">Start</a> | <a href="#" id="reset">Reset</a>
-      </div>
-      </div>
+    <div class="row" style="margin-bottom:15px;">
+        <div class="col-md-6">
+            <a href="#" id="start">Start</a> | <a href="#" id="reset">Reset</a>
+        </div>
+        <div class="col-md-6">
+            <button onclick="clearTimeout(timerId2)">stop</button>
+        </div>
+    </div>
     <div class="main" id="waiting">
-    
+
         <div class="row">
             <div class="col-md-10">
                 <h1 class="waiting">Waiting for players<br> to join the room.</h1>
@@ -132,51 +135,51 @@
     </div>
 
 
-        <div class="container-fluid" id="playing" style="display:none;">
-         <div class="row">
+    <div class="container-fluid" id="playing" style="display:none;">
+        <div class="row">
             <!-- when answers slide in, add "scale" to the questions div-->
-                <div class="col-md-7 question">
+            <div class="col-md-7 question">
 
-                    <h1>This is an example of question 1 and how it would initially appear on screen.</h1>
+                <h1>This is an example of question 1 and how it would initially appear on screen.</h1>
 
-                </div>
-                  <div class="col-md-5 animated" id="answers">
-                    <div class="row">
-                        <div class="col-md-6 answer sky" id="answer0">
-                        <input class="answer_radio" type="radio" value="0">
-                            <p id="choice">{{text}}</p>
-                        </div>
-                        <div class="col-md-6 answer gold" id="answer1">
-                        <input class="answer_radio" type="radio" value="0">
-                           <p id="choice">{{text}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 answer teal" id="answer2">
-                        <input class="answer_radio" type="radio" value="0">
-                            <p id="choice">{{text}}</p>
-                        </div>
-                        <div class="col-md-6 answer salmon" id="answer3">
-                        <input class="answer_radio" type="radio" value="0">
-                            <p id="choice">{{text}}</p>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
+            </div>
+            <div class="col-md-5 animated" id="answers">
                 <div class="row">
-                    <div class="timer-box2 col-md-1">
-                        <h1 class="timer2">10</h1>
-                        <svg class="spinner" width="158px" height="158px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-                        </svg>
-
+                    <div class="col-md-6 answer sky" id="answer0">
+                        
+                        <p id="choice">{{text}}</p>
+                    </div>
+                    <div class="col-md-6 answer gold" id="answer1">
+                        
+                        <p id="choice">{{text}}</p>
                     </div>
                 </div>
-
-
+                <div class="row">
+                    <div class="col-md-6 answer teal" id="answer2">
+                        
+                        <p id="choice">{{text}}</p>
+                    </div>
+                    <div class="col-md-6 answer salmon" id="answer3">
+                        
+                        <p id="choice">{{text}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="main sky" id="questionAnswer" style="display:none;">
+
+        <div class="row">
+            <div class="timer-box2 col-md-1">
+                <h1 class="timer2">10</h1>
+                <svg class="spinner" width="158px" height="158px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                </svg>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="main sky" id="questionAnswer" style="display:none;">
         <div class="correct">
             <h1 id="text"></h1>
         </div>
@@ -186,20 +189,20 @@
             <div class="row avatar"></div>
         </div>
         <div class="row">
-        <div class="col-md-6">
-        <h1 id="answered"></h1>
-        </div>
+            <div class="col-md-12">
+                <h1 id="answered"></h1>
+            </div>
         </div>
         <div class="row">
-         <div class="col-md-6">
-             <h1 id="icon"></h1>
-             <h1 class="points"></h1>
-             </div>
-         </div>
+            <div class="col-md-12">
+                <div id="icon"></div>
+                <h1 class="points"></h1>
+            </div>
+        </div>
     </div>
-        
 
-     <div class="leaderboard" id="scoring" style="display:none;">
+
+    <div class="leaderboard" id="scoring" style="display:none;">
         <div class="container" style="height:100%;">
             <div class="row" style="height:100%;">
                 <div class="col-md-1" style="height:100%;"></div>
