@@ -67,7 +67,7 @@ wrap = function(tag, text) {
 calculateScore = function(answers) {
     var correctCount = 0;
     answers.map(function(value, index) {
-        if (value) correctCount += 1;
+        if (value) correctCount += 100;
     });
     return correctCount;
 },
@@ -78,7 +78,6 @@ resetGame = function() {
         clearDB();
         results = {count: 0, answers: [], currentScore: 0};
         scoreNode.addClass('no_score').text('');
-        nextQuestion();
     }
 },
 startGame = function() {
@@ -87,11 +86,10 @@ startGame = function() {
 },
 showResults = function() {
     answersBlock.empty();
-    questionTitle.text('You answered ' + results.currentScore + ' of '
-        + 'the questions correctly.');
     gameOver = true;
     actionButton.text('Play again');
     scoreChart();
+    clearTimeout(timerId2);
 },
 scoreChart = function() {
     var data = [{name: 'You', score: results.currentScore}];
@@ -111,9 +109,12 @@ scoreChart = function() {
         }
         currentAverage = sum / count;
                 //data.push({name: 'Everyone else', score: currentAverage});
-                drawChart('.answers', data);
-                $(".answers").addClass('rotate');
-                $('.chart').show('slide', {direction: 'right'}, 400);
+                //drawChart('.answers', data);
+                $("#scoring").show();
+                $('#playing').hide();
+                $("#answerQuestion").hide();
+                $("#questionAnswer").hide();
+                $("#answers").hide();
             });
 },
 pushScore = function() {
@@ -182,7 +183,8 @@ gradeQuestion = function() {
         $("#playing").hide();
         $("#answerQuestion").hide();
         $("#questionAnswer").hide();
-        clearTimeout(timerId);
+        clearTimeout(timerId2);
+        showResults();
     }
     scoreNode.removeClass('no_score')
     .text(results.currentScore + ' correct');
@@ -285,7 +287,7 @@ timeSync = function() {
             timeLeft = Math.floor( timerCounter - remain );
             console.log(timeLeft + ' timeLeft');
             elem = $('timer');
-            if (timeLeft => 0 && !timerStart) { timerId = setInterval(countDown, 1000); timerStart = true; }
+            if (timeLeft <= 0 && !timerStart) { timerId = setInterval(countDown, 1000); timerStart = true; }
             else { console.log('no countdown'); return; }
         }
     });
@@ -323,7 +325,7 @@ updatePlayer = function(avatar, key, value) {
         }
     }
     else if (avatar == 'begin' && !timerStart) {
-        console.log('start ?');
+       
         timeSync();
     }
 },
@@ -372,7 +374,6 @@ $('.avatar').click(function() {
         name = prompt('Enter your name or initials.')
         name ? $(this).next().attr('id',name).html('<h2>'+ name +'</h2>') : name = 'Player ' + this.id.substr(-1);
         game.DB.child(game.player + '/name').transaction(function(data) { return name });
-
     }
 
     else {         }
