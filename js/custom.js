@@ -381,3 +381,4 @@ $('.avatar').click(function() {
 
 });
 init();
+//hi jw!
