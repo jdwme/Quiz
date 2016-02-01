@@ -162,14 +162,23 @@ gradeQuestion = function() {
     correctAnswer = questions[counter-1].answer,
     explanation = questions[counter-1].explanation,
     correct = chosenAnswer === correctAnswer,
-    theClass = correct ? 'correct' : 'incorrect';
+    iconClass = correct ? 'correct' : 'incorrect';
+    /*
+    if the variable correct equals true then make answerQuestionClass = main teal animated fadeInLeft,
+    otherwise if correct equals false, return main sky animated fadeInLeft.
+    Then, $("#answerQuestion").addClass(answerQuestionClass) will be the same as you adding that class to #answerQuestion.
+    But we are going to remove the class first.  so $("#answerQuestion").removeClass().addClass(answerQuestionClass).show();
+
+    
+    */
+    answerQuestionClass = correct ? 'main teal animated fadeInLeft' : 'main sky animated fadeInLeft';
     correctPoints = correct ? '100' : '0';
     if (isPlaying() && !$("#answerQuestion").is(':visible')) {
         $("#playing").hide();
         $("#answerQuestion").find("#answered").text(chosenAnswer);
-        $("#answerQuestion").find("#icon").removeClass().addClass(theClass);
+        $("#answerQuestion").find("#icon").removeClass().addClass(iconClass);
         $("#answerQuestion").find(".points").text(correctPoints + ' points.');
-        $("#answerQuestion").addClass("animated fadeInLeft").show();
+        $("#answerQuestion").removeClass().addClass(answerQuestionClass).show();
 
     }
     else if (!isPlaying()) {
