@@ -78,6 +78,7 @@ resetGame = function() {
         clearDB();
         results = {count: 0, answers: [], currentScore: 0};
         scoreNode.addClass('no_score').text('');
+        nextQuestion();
     }
 },
 startGame = function() {
@@ -287,7 +288,7 @@ timeSync = function() {
             timeLeft = Math.floor( timerCounter - remain );
             console.log(timeLeft + ' timeLeft');
             elem = $('timer');
-            if (timeLeft <= 0 && !timerStart) { timerId = setInterval(countDown, 1000); timerStart = true; }
+            if (!timerStart) { timerId = setInterval(countDown, 1000); timerStart = true; }
             else { console.log('no countdown'); return; }
         }
     });
@@ -325,8 +326,8 @@ updatePlayer = function(avatar, key, value) {
         }
     }
     else if (avatar == 'begin' && !timerStart) {
-       
-        timeSync();
+        console.log('start ?');
+        if (timeLeft >= 1) timeSync();
     }
 },
 init = function() {
