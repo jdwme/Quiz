@@ -77,12 +77,14 @@ resetGame = function() {
         gameOver = false;
         clearDB();
         results = {count: 0, answers: [], currentScore: 0};
+        $('h1.timer').show();
+        $('.timer-box').show();
+        $('h1.waiting').txt("Waiting for players \n to join the room.")
         scoreNode.addClass('no_score').text('');
-        nextQuestion();
     }
 },
 startGame = function() {
-    already = function (data) { if (!data) { console.log('startiong now'); return {time: Firebase.ServerValue.TIMESTAMP}; } else { timeSync(); console.log('started already'); } };
+    already = function (data) { if (!data) { console.log('startiong now'); return {time: Firebase.ServerValue.TIMESTAMP}; } else { console.log('started already'); } };
     game.DB.child('begin').transaction(already);
 },
 showResults = function() {
@@ -165,7 +167,7 @@ gradeQuestion = function() {
     if (isPlaying() && !$("#answerQuestion").is(':visible')) {
         $("#playing").hide();
         $("#answerQuestion").find("#answered").text(chosenAnswer);
-        $("#answerQuestion").find(".icon").removeClass().addClass(theClass);
+        $("#answerQuestion").find("#icon").removeClass().addClass(theClass);
         $("#answerQuestion").find(".points").text(correctPoints + ' points.');
         $("#answerQuestion").addClass("animated fadeInLeft").show();
 
@@ -192,11 +194,23 @@ gradeQuestion = function() {
     /*questionTitle.html(correctText + wrap('span', correctAnswer)).addClass('show_answer');*/
     answersBlock.text(explanation);
 },
-isPlaying = function() {
-    return game.player.substring(0,6) == 'avatar' ? true : false;
+isPlaying = function(player) {
+    return player ? player.substring(0,6) === 'avatar' : game.player.substring(0,6) === 'avatar';
 },
 nextQuestion = function() {
-    if (isPlaying()) {
+    $("#questionAnswer").hide();
+    var questionDetails = questions[counter];
+    questionNumber.text((counter+1) + ' of ' + questions.length);
+    questionTitle.text(questionDetails.text).removeClass('show_answer');
+    answersBlock.empty();
+    actionButton.text('Answer');
+    for (var i = 0; i < questionDetails.options.length; i++) {
+        var newQuestion = $('#answers').find('#answer' + i + ' #choice')
+            .text(questionDetails.options[i]).addClass('fadeInRight scale');
+        answersBlock.append($(newQuestion));
+    }
+    counter++;
+        if (isPlaying()) {
         $("#answerQuestion").removeClass('animated fadeInLeft').hide();
         $("#answers").removeClass('fadeOutRight').addClass("fadeInRight");
         $("#playing").show(); $("#waiting").hide();
@@ -210,18 +224,6 @@ nextQuestion = function() {
         timeSync2();
         /*$("#scoring").show();*/
     }
-    $("#questionAnswer").hide();
-    var questionDetails = questions[counter];
-    questionNumber.text((counter+1) + ' of ' + questions.length);
-    questionTitle.text(questionDetails.text).removeClass('show_answer');
-    answersBlock.empty();
-    actionButton.text('Answer');
-    for (var i = 0; i < questionDetails.options.length; i++) {
-        var newQuestion = $('#answers').find('#answer' + i + ' #choice')
-            .text(questionDetails.options[i]).addClass('fadeInRight scale');
-        answersBlock.append($(newQuestion));
-    }
-    counter++;
 },
 controlsHelp = function() {
     $.blockUI({
@@ -243,13 +245,12 @@ timeSync = function() {
     if (isPlaying()) {
         game.DB.child(game.player).child('time').set(Firebase.ServerValue.TIMESTAMP);
     }
-    else {
+    else if (!game.player) {
         getTime = game.DB.push({time: Firebase.ServerValue.TIMESTAMP});
         game.player = getTime.key();
         console.log(game.player);
     }
     game.DB.once('value',function(timeShot) {
-        console.log(timeShot);
         starttime = timeShot.child('begin/time').val();
         time = timeShot.child(game.player + '/time').val();
         if (time) {                
@@ -271,7 +272,7 @@ timeSync = function() {
                     case 1: $(".waiting").text("Ready...Set...GO!"); break;
                     default: break;
                 }
-                if (timeLeft <= 0) {
+                if (timeLeft === 0) {
                     clearTimeout(timerId);
                     timerStart = false;
                     $('h1.timer').hide();
@@ -279,6 +280,7 @@ timeSync = function() {
                     nextQuestion(); 
                 }
                 else {
+                    if (timeLeft < 0) { $('h1.waiting').text('Game has already started... Start new game?'); clearTimeout(timerId); $('h1.timer').hide(); $('.timer-box').hide(); }
                     $('h1.timer').text(timeLeft);
                     timeLeft--;
                 }
@@ -296,7 +298,7 @@ timeSync = function() {
 timeSync2 = function() {
     countDown2 = function() {
         console.log('countdown2');
-        if (timeOut <= 0) {
+        if (timeOut <= 0  && counter <= questions.length) {
             gradeQuestion();
             clearTimeout(timerId2);
             timerId2 = setTimeout(nextQuestion, 5000);
@@ -326,37 +328,24 @@ updatePlayer = function(avatar, key, value) {
         }
     }
     else if (avatar == 'begin' && !timerStart) {
-        console.log('start ?');
-        if (timeLeft > -1) timeSync();
+        console.log('start ? with '+timeLeft);
+        if (timeLeft >= 0) { timeSync(); }
+        else { console.log('start new game?'); }
     }
 },
 init = function() {
-    game.DB.on('child_added', function(children) {
-        game.DB[children.key] = children.val();
-        children.forEach(function(one) {
-            updatePlayer(children.key(), one.key(), one.val());
-        })
-    });
-    game.DB.on('child_removed', function(children) {
-        if (children.key().substring(0,6) === 'avatar') {
-            $('#' + children.key()).removeClass('taken')
-            .next().html('<h2>Player ' + children.key().substr(-1) + '</h2>');
-            if (children.key() == game.player) { game.player = '';}
+    initFunc = function(children){game.DB[children.key()]=children.val();children.forEach(function(each){updatePlayer(children.key(),each.key(),each.val());})};
+    game.DB.on('child_added', initFunc);
+    game.DB.on('child_changed', initFunc);
+    game.DB.on('child_removed', function(gZ) {
+        if (isPlaying(gZ.key())) {
+            $('#'+gZ.key()).removeClass('taken').find('h2').text('Player '+gZ.key().substr(-1));
+            gZ.key() === game.player ? game.player = '' : console.log(gz.key() + ' left the bldg');
         }
-        /*children.key() === game.player ? game.player = '' : console.log('?');*/
-        console.log('removed', children.key().split('_') + ' ', children.val());
     });
-    game.DB.on('child_changed', function(children) {
-        children.forEach(function(one) {
-            updatePlayer(children.key(), one.key(), one.val());
-        });
-    });
-    game.DB.once('value', function(results) {
-    });
-
 },
 clearDB = function() {
- var onComplete = function(error) { success = (!error) ? console.log('removed everything') : console.log('error' + error); }
+ var onComplete = function(error) { success = (!error) ? console.log('removed everything') : error; }
  game.DB.remove(onComplete);
 }
 retur = function() { console.log('not playing dummy'); return; };
@@ -381,4 +370,6 @@ $('.avatar').click(function() {
 
 });
 init();
+//jquery add on to add break back to the waiting text http://stackoverflow.com/questions/4535888/jquery-text-and-newlines
+(function() {$.fn.txt=function(text){this.text(text);this.html(this.html().replace(/\n/g,'<br/>'));return this;}})(jQuery);
 //hi jw!
