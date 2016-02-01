@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Demo</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/device.css" />
+    <link rel="stylesheet" href="css/quiz.css" />
+    <script src="js/jquery.min.js"></script>
+
+
+    <style>
+        .youare:after {
+            content: attr(data-num);
+        }
+    </style>
+</head>
+
+<body gray>
+
+
+    <div style="container">
+        <!--login div used to enter name from the device-->
+        <!--<div id="login" class="col-sm-12">
+            <form>
+                <div class="group">
+                    <input type="text"><span class="highlight"></span><span class="bar"></span>
+                    <label>Name</label>
+                </div>
+                <button type="button" class="button buttonRed">Login
+                    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                </button>
+            </form>
+        </div>-->
+        <!--waiting screen for devices-->
+        <!--<div id="waiting" class="col-sm-12">
+            <div class="row border">
+                <div class="timer-box pull-right">
+                    <h1 class="timer">10</h1>
+                    <svg class="spinner" width="95px" height="95px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                    </svg>
+
+                </div>
+            </div>
+            <div class="row title border">
+                <h1>Waiting for players to join the room</h1>
+            </div>
+        </div>
+        <div class="row" id="players">
+            <div class="col-xs-3">
+                <div class="row avatar" id="avatar_1">
+                </div>
+                <div class="row name" id="name_1">
+                    <h2>Player 1</h2>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="row avatar" id="avatar_2">
+                </div>
+                <div class="row name" id="name_2">
+                    <h2>Player 1</h2>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="row avatar" id="avatar_3">
+                </div>
+                <div class="row name" id="name_3">
+                    <h2>Player 1</h2>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="row avatar" id="avatar_4">
+                </div>
+                <div class="row name" id="name_4">
+                    <h2>Player 1</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="players">
+            <div class="col-xs-3">
+                <div class="row avatar" id="avatar_1">
+                </div>
+                <div class="row name" id="name_1">
+                    <h2>Player 1</h2>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="row avatar" id="avatar_2">
+                </div>
+                <div class="row name" id="name_2">
+                    <h2>Player 1</h2>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="row avatar" id="avatar_3">
+                </div>
+                <div class="row name" id="name_3">
+                    <h2>Player 1</h2>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="row avatar" id="avatar_4">
+                </div>
+                <div class="row name" id="name_4">
+                    <h2>Player 1</h2>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70.0-2014.11.23/jquery.blockUI.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://d3js.org/d3.v2.js"></script>
+    <script src="js/firebase.js"></script>
+<!--    <script src="js/custom.js"></script>-->
+
+    <script>
+        $(window, document, undefined).ready(function() {
+
+            $('input').blur(function() {
+                var $this = $(this);
+                if ($this.val())
+                    $this.addClass('used');
+                else
+                    $this.removeClass('used');
+            });
+
+            var $ripples = $('.ripples');
+
+            $ripples.on('click.Ripples', function(e) {
+
+                var $this = $(this);
+                var $offset = $this.parent().offset();
+                var $circle = $this.find('.ripplesCircle');
+
+                var x = e.pageX - $offset.left;
+                var y = e.pageY - $offset.top;
+
+                $circle.css({
+                    top: y + 'px',
+                    left: x + 'px'
+                });
+
+                $this.addClass('is-active');
+
+            });
+
+            $ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {
+                $(this).removeClass('is-active');
+            });
+
+        });
+    </script>
+</body>
+
+</html>

@@ -327,7 +327,7 @@ updatePlayer = function(avatar, key, value) {
     }
     else if (avatar == 'begin' && !timerStart) {
         console.log('start ?');
-        if (timeLeft >= 1) timeSync();
+        if (timeLeft > -1) timeSync();
     }
 },
 init = function() {

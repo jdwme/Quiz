@@ -480,6 +480,7 @@ h4 {
     text-align: center;
 }
 
+
 /*.answer:nth-of-type(1) {
     background: #aadffa;
 }
@@ -652,4 +653,54 @@ h4 {
 .score_bar2 {
     min-height: 180px;
     min-width: 170px;
+}
+
+@media (max-width: 767px) {
+    .timer {
+        font-size: 48px;
+        position: absolute;
+        line-height: 96px;
+        text-align: center;
+        height: 95px;
+        width: 95px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #cd040b;
+        z-index: 1;
+    }
+    
+    h1 {
+        color: #cd040b;
+        font-size: 28px;
+        line-height: 28px;
+        margin: 0 10px;
+    }
+    
+    h2 {
+        font-size: 16px;
+    }
+    
+    .title {
+        margin-top: -55px;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 2;
+    }
+    
+    #players {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5px;
+        overflow-x: hidden;
+    }
+    
+    .avatar {
+        width:75px;
+        height: 75px;
+    }
+    
+    .name {
+        margin-top: 1%;
+        text-align: center
+    }
 }
