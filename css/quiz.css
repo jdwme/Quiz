@@ -574,6 +574,11 @@ question h2 {
     min-width: 170px;
 }
 @media (max-width: 767px) {
+    .waiting {
+    font-size: 36px;
+    color: #cd040b;
+    line-height: 38px;
+    }
     .timer {
         font-size: 48px;
         position: absolute;
@@ -586,6 +591,12 @@ question h2 {
         color: #cd040b;
         z-index: 1;
     }
+    
+    .timer-box {
+    height: 95px;
+    margin-top: 3%;
+}
+    
     h1 {
         color: #cd040b;
         font-size: 28px;
