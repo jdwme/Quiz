@@ -54,7 +54,6 @@ answersBlock = $('.answers'),
 questionTitle = $('.question h1'),
 errorMessage = $('#error_message'),
 questionNumber = $('#question_number'),
-controlsMessage = $('#controls_message'),
 answerTemplate = $('#answer_template').text(),
 gameRoot = 'https://vzw.firebaseio.com/game/',
 game = {DB: new Firebase(gameRoot), player: ""},
@@ -84,7 +83,7 @@ resetGame = function() {
     }
 },
 startGame = function() {
-    already = function (data) { if (!data) { console.log('startiong now'); return {time: Firebase.ServerValue.TIMESTAMP}; } else { console.log('started already'); } };
+    already = function (data) { if (!data) { return {time: Firebase.ServerValue.TIMESTAMP}; } };
     game.DB.child('begin').transaction(already);
 },
 showResults = function() {
@@ -129,14 +128,6 @@ inputCheck = function() {
     }
     else {
         /*overlayMessage(errorMessage, {borderRadius: '3px', width: '35%', left: '32%'}, 2000);*/
-    }
-},
-overlayMessage = function(message, css, timeout) {
-    $.blockUI({ message: message, css: css });
-    if (timeout) {
-        setTimeout(function() {
-            $.unblockUI();
-        }, timeout);
     }
 },
 transitionEffect = function(func) {
@@ -234,22 +225,6 @@ nextQuestion = function() {
         /*$("#scoring").show();*/
     }
 },
-controlsHelp = function() {
-    $.blockUI({
-        message: controlsMessage,
-        css: {
-            borderRadius: '3px',
-            width: '65%',
-            top: '20%',
-            left: '17%' },
-            onBlock: function() {
-                $(document).click(function() {
-                    $.unblockUI();
-                    $(document).unbind('click');
-                });
-            }
-        });
-},
 timeSync = function() {
     if (isPlaying()) {
         game.DB.child(game.player).child('time').set(Firebase.ServerValue.TIMESTAMP);
@@ -257,7 +232,6 @@ timeSync = function() {
     else if (!game.player) {
         getTime = game.DB.push({time: Firebase.ServerValue.TIMESTAMP});
         game.player = getTime.key();
-        console.log(game.player);
     }
     game.DB.once('value',function(timeShot) {
         starttime = timeShot.child('begin/time').val();
@@ -297,16 +271,13 @@ timeSync = function() {
             timeLeft = timerCounter;
             remain = ((time - starttime) / 1000);
             timeLeft = Math.floor( timerCounter - remain );
-            console.log(timeLeft + ' timeLeft');
             elem = $('timer');
             if (!timerStart) { timerId = setInterval(countDown, 1000); timerStart = true; }
-            else { console.log('no countdown'); return; }
         }
     });
 },
 timeSync2 = function() {
     countDown2 = function() {
-        console.log('countdown2');
         if (timeOut <= 0  && counter <= questions.length) {
             setTimeout(gradeQuestion(), 5000);
             clearTimeout(timerId2);
@@ -331,16 +302,13 @@ updatePlayer = function(avatar, key, value) {
             elem = $('#' + avatar).next().attr('data-name', key).html('<h2>' + value +'</h2>');
         }
         if (key == 'score') {
-            console.log(avatar + ' has ' + value)
             $('#' + avatar.substr(-1)).find('.score_bar').css('min-height',(value + 50) + 'px');
             $('#' + avatar.substr(-1)).find('h1').text(value);
-            /*remove elem.children('.avatar').removeClass('taken'), elem.children('.name').html('<h2>Player ' + avatar.substr(-1) +'</h2>');*/
-        }
+            }
     }
     else if (avatar == 'begin' && !timerStart) {
-        console.log('start ? with '+timeLeft);
         if (timeLeft >= 0) { timeSync(); }
-        else { console.log('start new game?'); }
+        else { }
     }
 },
 init = function() {
@@ -350,20 +318,18 @@ init = function() {
     game.DB.on('child_removed', function(gZ) {
         if (isPlaying(gZ.key())) {
             $('#'+gZ.key()).removeClass('taken').find('h2').text('Player '+gZ.key().substr(-1));
-            gZ.key() === game.player ? game.player = '' : console.log(gZ.key() + ' left the bldg');
+            if(gZ.key() === game.player)game.player = '';
         }
     });
 },
 clearDB = function() {
- var onComplete = function(error) { success = (!error) ? console.log('removed everything') : error; }
+ var onComplete = function(error) { success = (!error) ? console.log('db reset.') : error; }
  game.DB.remove(onComplete);
 }
-retur = function() { console.log('not playing dummy'); return; };
 
 $('#reset').click(resetGame);
 $('#start').click(startGame);
-$('.answer').click( isPlaying() ? retur : gradeQuestion );
-$('#controls_help').click(controlsHelp);
+$('.answer').click( isPlaying() ? '' : gradeQuestion );
 $('.answers').click(dispatchAction);
 $('#submit').click(dispatchAction);
 $('.avatar').click(function() {
@@ -372,7 +338,7 @@ $('.avatar').click(function() {
         game.DB.child(game.player).child('time').set(Firebase.ServerValue.TIMESTAMP);
         game.DB.child(game.player).onDisconnect().remove();
         name = prompt('Enter your name or initials.').substring(0,16);
-        name ? $(this).next().attr('id',name).html('<h2>'+ name +'</h2>') : name = 'Player ' + this.id.substr(-1);
+        name ? $(this).next().attr('id',name).find('h2').text(name) : name = 'Player ' + this.id.substr(-1);
         game.DB.child(game.player + '/name').transaction(function(data) { return name });
     }
 
