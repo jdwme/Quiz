@@ -239,7 +239,7 @@ timeSync = function() {
         if (time) {                
             countDown = function() {
                 switch (timeLeft) {
-                    case 14: $(".waiting").text("Ready"); break;
+                    /*case 14: $(".waiting").text("Ready"); break;
                     case 13: $(".waiting").text("Ready."); break;
                     case 12: $(".waiting").text("Ready.."); break;
                     case 11: $(".waiting").text("Ready..."); break;
@@ -247,12 +247,12 @@ timeSync = function() {
                     case 9: $(".waiting").text("Ready...Set."); break;
                     case 8: $(".waiting").text("Ready...Set.."); break;
                     case 7: $(".waiting").text("Ready...Set..."); break;
-                    case 6: $(".waiting").text("Ready...Set.."); break;
-                    case 5: $(".waiting").text("Ready...Set."); break;
-                    case 4: $(".waiting").text("Ready...Set.."); break;
-                    case 3: $(".waiting").text("Ready...Set..."); break;
-                    case 2: $(".waiting").text("Ready...Set...GO!"); break;
-                    case 1: $(".waiting").text("Ready...Set...GO!"); break;
+                    case 6: $(".waiting").text("Ready...Set.."); break;*/
+                    case 5: $(".waiting").text("Ready."); break;
+//                    case 4: $(".waiting").text("Ready...Set.."); break;
+                    case 3: $(".waiting").text("Ready.  Set."); break;
+//                    case 2: $(".waiting").text("Ready...Set...GO!"); break;
+                    case 1: $(".waiting").text("Ready.  Set.  GO!"); break;
                     default: break;
                 }
                 if (timeLeft === 0) {
