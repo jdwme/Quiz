@@ -308,7 +308,7 @@ timeSync2 = function() {
     countDown2 = function() {
         console.log('countdown2');
         if (timeOut <= 0  && counter <= questions.length) {
-            gradeQuestion();
+            setTimeout(gradeQuestion(), 5000);
             clearTimeout(timerId2);
             timerId2 = setTimeout(nextQuestion, 5000);
             $('.timer-box2').hide();
@@ -332,6 +332,7 @@ updatePlayer = function(avatar, key, value) {
         }
         if (key == 'score') {
             console.log(avatar + ' has ' + value)
+            $('#' + avatar.substr(-1)).find('.score_bar').css('min-height',(value + 50) + 'px');
             $('#' + avatar.substr(-1)).find('h1').text(value);
             /*remove elem.children('.avatar').removeClass('taken'), elem.children('.name').html('<h2>Player ' + avatar.substr(-1) +'</h2>');*/
         }
