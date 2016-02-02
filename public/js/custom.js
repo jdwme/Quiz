@@ -266,8 +266,8 @@ timeSync = function() {
                     if (timeLeft < 0) { $('h1.waiting').text('Game has already started... Start new game?'); clearTimeout(timerId); $('h1.timer').hide(); $('.timer-box').hide(); }
                     else {
                         $('h1.timer').text(timeLeft);
-                        timeLeft--;
                         if (!$('h1.timer').is(':visible')) { $('h1.timer').show(); }
+                        timeLeft--;
                     }
                 }
             }
@@ -287,12 +287,11 @@ timeSync2 = function() {
             timerId2 = setTimeout(nextQuestion, 5000);
             $('.timer-box2').hide();
         }
-        $('.timer-box2').show();
-        $('.timer2').text(timeOut);
         timeOut--
+        if (!$('.timer-box2').is(':visible')) $('.timer-box2').show();
+        $('.timer2').text(timeOut);
     }
     timeOut = waitTime;
-
     timerId2 = setInterval(countDown2, 1000);
 },
 updatePlayer = function(avatar, key, value) {
