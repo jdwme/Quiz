@@ -672,6 +672,10 @@ h4 {
     min-width: 170px;
 }
 
+.resets {
+    margin-bottom:-25px;
+}
+
 @media (max-width: 767px) {
     .waiting {
         font-size: 28px;

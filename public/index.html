@@ -21,7 +21,14 @@
 </head>
 
 <body>
-<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 resets">
+            <a href="#" id="start">Start</a> | <a href="#" id="reset">Reset</a>
+        </div>
+        <!--<div class="col-md-6">
+            <button onclick="clearTimeout(timerId2)">stop</button>
+        </div>-->
+        </div>
 
     <div class="main" id="waiting">
 
@@ -130,14 +137,7 @@
             </div>
         </div>
         
-        <div class="row" style="margin-bottom:15px;">
-        <div class="col-md-6 resets">
-            <button id="start">Start</button>  <button id="reset">Reset</button>
-        </div>
-        <!--<div class="col-md-6">
-            <button onclick="clearTimeout(timerId2)">stop</button>
-        </div>-->
-        </div>
+        
     </div>
  
 
@@ -280,8 +280,10 @@
                 <div class="col-md-1" style="height:100%;"></div>
             </div>
         </div>
+         </div>
+        
     
-    </div>
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70.0-2014.11.23/jquery.blockUI.js"></script>
     <!--<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="http://d3js.org/d3.v2.js"></script>-->
