@@ -236,7 +236,7 @@ timeSync = function() {
     game.DB.once('value',function(timeShot) {
         starttime = timeShot.child('begin/time').val();
         time = timeShot.child(game.player + '/time').val();
-        if (time) {                
+        if (time) {               
             countDown = function() {
                 switch (timeLeft) {
                     /*case 14: $(".waiting").text("Ready"); break;
@@ -264,8 +264,11 @@ timeSync = function() {
                 }
                 else {
                     if (timeLeft < 0) { $('h1.waiting').text('Game has already started... Start new game?'); clearTimeout(timerId); $('h1.timer').hide(); $('.timer-box').hide(); }
-                    $('h1.timer').text(timeLeft);
-                    timeLeft--;
+                    else {
+                        $('h1.timer').text(timeLeft);
+                        timeLeft--;
+                        if (!$('h1.timer').is(':visible')) { $('h1.timer').show(); }
+                    }
                 }
             }
             timeLeft = timerCounter;
