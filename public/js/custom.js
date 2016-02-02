@@ -181,6 +181,7 @@ gradeQuestion = function() {
     results.currentScore = calculateScore(results.answers);
     pushScore();
     if (counter === questions.length) {
+        setTimeout(function() {
         $("#scoring").show();
         $("#answers").hide();
         $("#playing").hide();
@@ -188,6 +189,7 @@ gradeQuestion = function() {
         $("#questionAnswer").hide();
         clearTimeout(timerId2);
         showResults();
+    }, 5000);
     }
     scoreNode.removeClass('no_score')
     .text(results.currentScore + ' correct');
