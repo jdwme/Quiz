@@ -282,18 +282,17 @@ timeSync = function() {
 timeSync2 = function() {
     timeOut = waitTime;
     countDown2 = function() {
-        if (timeOut <= 0  && counter <= questions.length) {
+        $('.timer2').text(timeOut);
+        timeOut--
+        $('.timer-box2').show();
+        if (timeOut == -1  && counter <= questions.length) {
             setTimeout(gradeQuestion(), 5000);
             clearTimeout(timerId2);
             timerId2 = setTimeout(nextQuestion, 5000);
             $('.timer-box2').hide();
         }
-        $('.timer2').text(timeOut);
-        $('.timer-box2').show();
-        timeOut--
-        timerId2 = setInterval(countDown2, 1000);
     }
-
+    timerId2 = setInterval(countDown2, 1000);
 },
 updatePlayer = function(avatar, key, value) {
     if (avatar.substring(0,6) === 'avatar') {
