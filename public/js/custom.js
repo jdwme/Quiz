@@ -266,7 +266,7 @@ timeSync = function() {
                     if (timeLeft < 0) { $('h1.waiting').text('Game has already started... Start new game?'); clearTimeout(timerId); $('h1.timer').hide(); $('.timer-box').hide(); }
                     else {
                         $('h1.timer').text(timeLeft);
-                        if (!$('h1.timer').is(':visible')) { $('h1.timer').show(); }
+                        if (!$('.timer-box').is(':visible')) { $('.timer-box').show(); }
                         timeLeft--;
                     }
                 }
