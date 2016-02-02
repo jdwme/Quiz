@@ -282,6 +282,11 @@ h4 {
     z-index: 1;
 }
 
+.resets button{
+    margin:5% 1%;
+    
+    
+}
 #players {
     margin-top: 100px;
 }
