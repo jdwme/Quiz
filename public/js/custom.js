@@ -288,8 +288,8 @@ timeSync2 = function() {
             timerId2 = setTimeout(nextQuestion, 5000);
             $('.timer-box2').hide();
         }
-        if (!$('.timer-box2').is(':visible')) $('.timer-box2').show();
         $('.timer2').text(timeOut);
+        $('.timer-box2').show();
         timeOut--
         timerId2 = setInterval(countDown2, 1000);
     }
