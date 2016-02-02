@@ -280,6 +280,8 @@ timeSync = function() {
     });
 },
 timeSync2 = function() {
+    timeOut = waitTime;
+    timerId2 = setInterval(countDown2, 1000);
     countDown2 = function() {
         if (timeOut <= 0  && counter <= questions.length) {
             setTimeout(gradeQuestion(), 5000);
@@ -287,12 +289,11 @@ timeSync2 = function() {
             timerId2 = setTimeout(nextQuestion, 5000);
             $('.timer-box2').hide();
         }
-        timeOut--
         if (!$('.timer-box2').is(':visible')) $('.timer-box2').show();
         $('.timer2').text(timeOut);
+        timeOut--
     }
-    timeOut = waitTime;
-    timerId2 = setInterval(countDown2, 1000);
+
 },
 updatePlayer = function(avatar, key, value) {
     if (avatar.substring(0,6) === 'avatar') {
