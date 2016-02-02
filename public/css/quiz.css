@@ -230,13 +230,13 @@ h4 {
 }
 
 .main {
-    min-height: 1000px;
-    min-width: 100%;
+    min-height: 98vh;
+    min-width: 96vw;
     top: 0;
     left: 0;
     padding-left: 3%;
-    padding-right: 2%;
-    margin: -1% 0% 0% -2%
+    padding-right: 3%;
+    margin: 2% 0% 0% -2%
 }
 
 .waiting {
@@ -815,5 +815,9 @@ h4 {
     }
     #answerQuestion .row .avatar {
         margin-bottom: 10vh;
+    }
+    
+    .resets {
+        display:none;
     }
 }
