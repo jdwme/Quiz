@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Quiz Demo</title>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/quiz.css" />
@@ -33,7 +34,7 @@
                 <h1 class="waiting">Waiting for players<br> to join the room.</h1>
             </div>
             <div class="col-md-2 col-xs-2">
-                <div class="timer-box">
+                <div class="timer-box" style="display:none">
                     <h1 class="timer"></h1>
                     <svg class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                         <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
@@ -135,7 +136,7 @@
     </div>
 
 
-    <div class="container-fluid green" id="playing" style="height:100vh; display:none;" >
+    <div class="container-fluid green" id="playing" style="height:100vh; display:none;">
         <div class="row" id="question_avatar">
             <div class="row avatar"></div>
         </div>
@@ -146,25 +147,25 @@
                 <h1>This is an example of question 1 and how it would initially appear on screen.</h1>
 
             </div>
-            
+
             <div class="col-md-5 col-xs-12 animated" id="answers">
                 <div class="row">
                     <div class="col-md-6 col-xs-6 answer sky" id="answer0">
-                        
+
                         <p id="choice">{{text}}</p>
                     </div>
                     <div class="col-md-6 col-xs-6 answer gold" id="answer1">
-                        
+
                         <p id="choice">{{text}}</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-xs-6 answer teal" id="answer2">
-                        
+
                         <p id="choice">{{text}}</p>
                     </div>
                     <div class="col-md-6 col-xs-6 answer salmon" id="answer3">
-                        
+
                         <p id="choice">{{text}}</p>
                     </div>
                 </div>
@@ -281,7 +282,7 @@
     <script src="js/firebase.js"></script>
     <script src="js/custom.js"></script>
     <link rel="stylesheet" href="css/animate.css" />
-    
+
 
     <script>
     </script>
