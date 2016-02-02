@@ -300,6 +300,7 @@ updatePlayer = function(avatar, key, value) {
         }
         if (key == 'name') {
             elem = $('#' + avatar).next().attr('data-name', key).html('<h2>' + value +'</h2>');
+            elem = $('#' + avatar.substr(-1)).find(".score_name p").text(value);
         }
         if (key == 'score') {
             $('#' + avatar.substr(-1)).find('.score_bar').css('min-height',(value + 50) + 'px');
@@ -337,11 +338,11 @@ $('.avatar').click(function() {
         game.player = this.id;
         game.DB.child(game.player).child('time').set(Firebase.ServerValue.TIMESTAMP);
         game.DB.child(game.player).onDisconnect().remove();
-        name = prompt('Enter your name or initials.').substring(0,16);
+        name = prompt('Enter your name or initials.') || 'Player ' + this.id.substr(-1);
+        if (name.length > 16) name = name.substring(0,16);
         name ? $(this).next().attr('id',name).find('h2').text(name) : name = 'Player ' + this.id.substr(-1);
         game.DB.child(game.player + '/name').transaction(function(data) { return name });
     }
-
     else {  }
 
 });
