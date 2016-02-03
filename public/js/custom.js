@@ -265,7 +265,15 @@ timeSync = function() {
                     nextQuestion(); 
                 }
                 else {
-                    if (timeLeft < 0) { $('h1.waiting').text('Game has already started... Start new game?'); clearTimeout(timerId); $('h1.timer').hide(); $('.timer-box').hide(); }
+                    if (timeLeft < 0) {
+                        game.DB = game.DB.parent().push({time: Firebase.ServerValue.TIMESTAMP});
+                        init();
+                     $('h1.waiting').text('Pushed new database \n cuz a game was going on \n or finished.  \n Wanna play?'); 
+                     game.player = '';
+                     clearTimeout(timerId);
+                      $('h1.timer').hide();
+                       $('.timer-box').hide();
+                        }
                     else {
                         $('h1.timer').text(timeLeft);
                         if (!$('.timer-box').is(':visible')) { $('.timer-box').show(); }
@@ -318,14 +326,18 @@ updatePlayer = function(avatar, key, value) {
 },
 init = function() {
     initFunc = function(children){game.DB[children.key()]=children.val();children.forEach(function(each){updatePlayer(children.key(),each.key(),each.val());})};
-    game.DB.on('child_added', initFunc);
-    game.DB.on('child_changed', initFunc);
-    game.DB.on('child_removed', function(gZ) {
+
+    game.DB.limitToLast(1).once("child_added", function(data) {
+        game.DB = game.DB.child(data.key());
+        game.DB.on('child_added', initFunc);
+        game.DB.on('child_changed', initFunc);
+        game.DB.on('child_removed', function(gZ) {
         if (isPlaying(gZ.key())) {
             $('#'+gZ.key()).removeClass('taken').find('h2').text('Player '+gZ.key().substr(-1));
-            if(gZ.key() === game.player)game.player = '';
+            if(gZ.key() === game.player) game.player = '';
         }
     });
+});
 },
 clearDB = function() {
  var onComplete = function(error) { success = (!error) ? console.log('db reset.') : error; }
