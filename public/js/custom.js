@@ -1,44 +1,45 @@
-var questions = [
+(function() {
+	var questions = [
 {
-    "text": "Which of the following choices will you choose?",
-    "options": ["one", "two", "three", "I like them all."],
-    "answer": "I like them all.",
-    "explanation": "The ladder would be discrimination."
+    "text": "Who founded Chipotle?",
+    "options": ["Matt Lauer", "Ray Kroc", "Steve Ells", "Richard McDonald"],
+    "answer": "Steve Ells",
+    "explanation": "Steve Ells founded Chipotle in 1993."
 }, {
-    "text": "Which of the following is not a mobile OS?",
-    "options": ["iOS", "Cocoa Touch", "Android", "Palm OS"],
-    "answer": "Cocoa Touch",
-    "explanation": "Cocoa Touch is the kernel in which iOS runs on top of."
+    "text": "Where was the first Chipotle?",
+    "options": ["San Francisco\, CA", "Denver\, CO", "Toledo\, OH", "Broomfield\, CO"],
+    "answer": "Denver\, CO",
+    "explanation": "Chipotle was first opened in Denver\, using a $75k loan from his Dad."
 }, {
-    "text": "Who is the most powerful person in the universe?",
-    "options": ["Me", "You", "Superman", "Batman"],
-    "answer": "Me",
-    "explanation": "Believe in yourself."
+    "text": "In order for Steve to repay his Dad, how many burritos must he sell per day?",
+    "options": ["114", "208", "94", "961"],
+    "answer": "114",
+    "explanation": "He ended up selling over 1000 per day."
 }, {
-    "text": "How many cups of coffee per day is considered healthy?",
-    "options": ["Twelve", "Nineteen", "Fourty Four", "Thirteen"],
-    "answer": "Twelve",
-    "explanation": "Process of elimination tells you lower would be better."
+    "text": "In 1996, Steve Ells' parents raise how much money to expand?",
+    "options": ["$600k", "$1.3m", "$2.9m", "$32m"],
+    "answer": "$1.3m",
+    "explanation": "They were hustling to make that green."
 }, {
-    "text": "What is Object Based Programming?",
-    "options": ["Language with hiearchy levels", "Not requiring a class", "A language including an object", "Implicit Inheritance & Subtype Support"],
-    "answer": "Not requiring a class",
-    "explanation": "Object Based Programming lanaguges do not require a class, while object oriented does."
+    "text": "What company invests 50 million into Chipotle in 1998?",
+    "options": ["Prez", "Boston Market", "McDonalds", "Fazoli's"],
+    "answer": "McDonalds",
+    "explanation": "They wanted to show invested that they were diversified in financial planning."
 }, {
-    "text": "By whom was the first computer created?",
-    "options": ["Bill Nye the Science Guy", "Bill Gates", "Charles Babbage", "Steve Jobs"],
-    "answer": "Charles Babbage",
-    "explanation": "Google said it was Charles Babbage who made the first computer.."
+    "text": "What was the organization name after McDonalds investments?",
+    "options": ["Ronald Food", "Whole Foods", "Food with Integrity", "Diversified Foods"],
+    "answer": "Food with Integrity",
+    "explanation": "They later shut it down due to competition with McDonalds."
 }, {
-    "text": "Android was first mobile operating system.",
-    "options": ["True", "False"],
-    "answer": "True",
-    "explanation": "I bet you can't prove otherwise."
+    "text": "What year did Chipotle go public?",
+    "options": ["March 2\, 2003", "Jan 26\, 2006", "Feb 2\, 1993", "December 3\, 1999"],
+    "answer": "Jan 26\, 2006",
+    "explanation": "Jan 26\, 2006 is when they went public with stock as IPO."
 }, {
-    "text": "Which of the following choices is not a real answer?",
-    "options": ["a", "b", "c", "d"],
-    "answer": "none",
-    "explanation": "This question will always be answered wrong.  You are welcome."
+    "text": "What is the intial stock price of IPO?",
+    "options": ["$22", "$23", "$25", "$44"],
+    "answer": "$22",
+    "explanation": "On the first day\, it doubles to $44."
 }];
 var
 counter = 0,
@@ -312,32 +313,17 @@ updatePlayer = function(avatar, key, value) {
         }
         if (key == 'name') {
             elem = $('#' + avatar).next().attr('data-name', key).html('<h2>' + value +'</h2>');
-            elem = $('#' + avatar.substr(-1)).find(".score_name p").text(value);
+            elem = $('#' + avatar.replace('avatar_','')).find(".score_name p").text(value);
         }
         if (key == 'score') {
-            $('#' + avatar.substr(-1)).find('.score_bar').css('min-height',(value + 50) + 'px');
-            $('#' + avatar.substr(-1)).find('h1').text(value);
+            $('#' + avatar.replace('avatar_','')).find('.score_bar').css('min-height',(value + 50) + 'px');
+            $('#' + avatar.replace('avatar_','')).find('h1').text(value);
             }
     }
     else if (avatar == 'begin' && !timerStart) {
         if (timeLeft >= 0) { timeSync(); }
         else { }
     }
-},
-init = function() {
-    initFunc = function(children){game.DB[children.key()]=children.val();children.forEach(function(each){updatePlayer(children.key(),each.key(),each.val());})};
-
-    game.DB.limitToLast(1).once("child_added", function(data) {
-        game.DB = game.DB.child(data.key());
-        game.DB.on('child_added', initFunc);
-        game.DB.on('child_changed', initFunc);
-        game.DB.on('child_removed', function(gZ) {
-        if (isPlaying(gZ.key())) {
-            $('#'+gZ.key()).removeClass('taken').find('h2').text('Player '+gZ.key().substr(-1));
-            if(gZ.key() === game.player) game.player = '';
-        }
-    });
-});
 },
 clearDB = function() {
  var onComplete = function(error) { success = (!error) ? console.log('db reset.') : error; }
@@ -354,14 +340,27 @@ $('.avatar').click(function() {
         game.player = this.id;
         game.DB.child(game.player).child('time').set(Firebase.ServerValue.TIMESTAMP);
         game.DB.child(game.player).onDisconnect().remove();
-        name = prompt('Enter your name or initials.') || 'Player ' + this.id.substr(-1);
+        name = prompt('Enter your name or initials.') || 'Player ' + this.id.replace('avatar_','');
         if (name.length > 16) name = name.substring(0,16);
-        name ? $(this).next().attr('id',name).find('h2').text(name) : name = 'Player ' + this.id.substr(-1);
+        name ? $(this).next().attr('id',name).find('h2').text(name) : name = 'Player ' + this.id.replace('avatar_','');
         game.DB.child(game.player + '/name').transaction(function(data) { return name });
     }
     else {  }
 
 });
-init();
+    initFunc = function(children){game.DB[children.key()]=children.val();children.forEach(function(each){updatePlayer(children.key(),each.key(),each.val());})};
+
+    game.DB.limitToLast(1).once("child_added", function(data) {
+        game.DB = game.DB.child(data.key());
+        game.DB.on('child_added', initFunc);
+        game.DB.on('child_changed', initFunc);
+        game.DB.on('child_removed', function(gZ) {
+        if (isPlaying(gZ.key())) {
+            $('#'+gZ.key()).removeClass('taken').parent().find('h2').text('Player '+gZ.key().replace('avatar_',''));
+            if(gZ.key() === game.player) game.player = '';
+        }
+    });
+});
+})();
 //jquery add on to add break back to the waiting text http://stackoverflow.com/questions/4535888/jquery-text-and-newlines
 (function() {$.fn.txt=function(text){this.text(text);this.html(this.html().replace(/\n/g,'<br/>'));return this;}})($);
