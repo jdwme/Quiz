@@ -24,7 +24,7 @@
     "text": "What company invests 50 million into Chipotle in 1998?",
     "options": ["Prez", "Boston Market", "McDonalds", "Fazoli's"],
     "answer": "McDonalds",
-    "explanation": "They wanted to show invested that they were diversified in financial planning."
+    "explanation": "McDonalds wanted to show investors that they were diversified in financial planning."
 }, {
     "text": "What was the organization name after McDonalds investments?",
     "options": ["Ronald Food", "Whole Foods", "Food with Integrity", "Diversified Foods"],
@@ -170,11 +170,13 @@ gradeQuestion = function() {
         $("#answerQuestion").find("#answered").text(chosenAnswer);
         $("#answerQuestion").find("#icon").removeClass().addClass(iconClass);
         $("#answerQuestion").find(".points").text(correctPoints + ' points.');
+
         $("#answerQuestion").removeClass().addClass(answerQuestionClass).show();
 
     }
     else if (!isPlaying()) {
         $("#questionAnswer #text").text(correctAnswer);
+        $("#questionAnswer #explanation_text").text(explanation);
         $("#questionAnswer").addClass("animated fadeInRight").show();
         $("#playing").hide();
     }
