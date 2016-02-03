@@ -268,7 +268,7 @@ timeSync = function() {
                     if (timeLeft < 0) {
                         game.DB = game.DB.parent().push({time: Firebase.ServerValue.TIMESTAMP});
                         init();
-                     $('h1.waiting').text('Pushed new database \n cuz a game was going on \n or finished.  \n Wanna play?'); 
+                     $('h1.waiting').text('Waiting for players to join'); 
                      game.player = '';
                      clearTimeout(timerId);
                       $('h1.timer').hide();
