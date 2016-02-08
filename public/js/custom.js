@@ -271,7 +271,7 @@ timeSync = function() {
                 }
                 else {
                     if (timeLeft < 0) {
-                        game.DB = game.DB.parent().push({time: Firebase.ServerValue.TIMESTAMP});
+                        game.DB = game.DB.push({time: Firebase.ServerValue.TIMESTAMP});
                         init();
                         $('h1.waiting').text('Waiting for players to join'); 
                         game.player = '';
