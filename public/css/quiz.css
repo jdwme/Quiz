@@ -51,7 +51,7 @@ body {
     font-family: Arial, sans-serif, Helvetica;
     height: 100%;
     margin-bottom: 8em;
-    overflow: hidden;
+    /*overflow: hidden; UGH */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

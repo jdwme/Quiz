@@ -1,5 +1,5 @@
-(function() {
-	var questions = [
+
+var questions = [
 {
     "text": "Who founded Chipotle?",
     "options": ["Matt Lauer", "Ray Kroc", "Steve Ells", "Richard McDonald"],
@@ -84,7 +84,7 @@ resetGame = function() {
     }
 },
 startGame = function() {
-    already = function (data) { if (!data) { return {time: Firebase.ServerValue.TIMESTAMP}; } };
+    already = function (data,err) { if (!data) { return {time: Firebase.ServerValue.TIMESTAMP}; } if (err) { console.log(err);} };
     game.DB.child('begin').transaction(already);
 },
 showResults = function() {
@@ -150,7 +150,8 @@ dispatchAction = function() {
     }
 },
 gradeQuestion = function() {
-    var chosenAnswer = $(this).find('#choice').text(),
+    var chosenAnswer = $("#playing").find('.clicked').text();
+    //var chosenAnswer = $(this).find('#choice').text(),
     correctAnswer = questions[counter-1].answer,
     explanation = questions[counter-1].explanation,
     correct = chosenAnswer === correctAnswer,
@@ -185,14 +186,14 @@ gradeQuestion = function() {
     pushScore();
     if (counter === questions.length) {
         setTimeout(function() {
-        $("#scoring").show();
-        $("#answers").hide();
-        $("#playing").hide();
-        $("#answerQuestion").hide();
-        $("#questionAnswer").hide();
-        clearTimeout(timerId2);
-        showResults();
-    }, 5000);
+            $("#scoring").show();
+            $("#answers").hide();
+            $("#playing").hide();
+            $("#answerQuestion").hide();
+            $("#questionAnswer").hide();
+            clearTimeout(timerId2);
+            showResults();
+        }, 5000);
     }
     scoreNode.removeClass('no_score')
     .text(results.currentScore + ' correct');
@@ -207,15 +208,16 @@ nextQuestion = function() {
     var questionDetails = questions[counter];
     questionNumber.text((counter+1) + ' of ' + questions.length);
     questionTitle.text(questionDetails.text).removeClass('show_answer');
+    $('#answers').find('.clicked').removeClass('clicked');
     answersBlock.empty();
     actionButton.text('Answer');
     for (var i = 0; i < questionDetails.options.length; i++) {
         var newQuestion = $('#answers').find('#answer' + i + ' #choice')
-            .text(questionDetails.options[i]).addClass('fadeInRight');
+        .text(questionDetails.options[i]).addClass('fadeInRight');
         answersBlock.append($(newQuestion));
     }
     counter++;
-        if (isPlaying()) {
+    if (isPlaying()) {
         $("#answerQuestion").removeClass('animated fadeInLeft').hide();
         $("#answers").removeClass('fadeOutRight').addClass("fadeInRight");
         $("#playing").show(); $("#waiting").hide();
@@ -254,9 +256,9 @@ timeSync = function() {
                     case 7: $(".waiting").text("Ready...Set..."); break;
                     case 6: $(".waiting").text("Ready...Set.."); break;*/
                     case 5: $(".waiting").text("Ready."); break;
-//                    case 4: $(".waiting").text("Ready...Set.."); break;
+                    /*                    case 4: $(".waiting").text("Ready...Set.."); break;*/
                     case 3: $(".waiting").text("Ready.  Set."); break;
-//                    case 2: $(".waiting").text("Ready...Set...GO!"); break;
+                    /*                    case 2: $(".waiting").text("Ready...Set...GO!"); break;*/
                     case 1: $(".waiting").text("Ready.  Set.  GO!"); break;
                     default: break;
                 }
@@ -271,12 +273,12 @@ timeSync = function() {
                     if (timeLeft < 0) {
                         game.DB = game.DB.parent().push({time: Firebase.ServerValue.TIMESTAMP});
                         init();
-                     $('h1.waiting').text('Waiting for players to join'); 
-                     game.player = '';
-                     clearTimeout(timerId);
-                      $('h1.timer').hide();
-                       $('.timer-box').hide();
-                        }
+                        $('h1.waiting').text('Waiting for players to join'); 
+                        game.player = '';
+                        clearTimeout(timerId);
+                        $('h1.timer').hide();
+                        $('.timer-box').hide();
+                    }
                     else {
                         $('h1.timer').text(timeLeft);
                         if (!$('.timer-box').is(':visible')) { $('.timer-box').show(); }
@@ -309,9 +311,9 @@ timeSync2 = function() {
 },
 updatePlayer = function(avatar, key, value) {
     if (avatar.substring(0,6) === 'avatar') {
-    if (key == 'time') {
-        $('#' + avatar).addClass('taken');
-                /* $('#' + avatar).hasClass('taken') ? $('#' + avatar).removeClass('taken') : */
+        if (key == 'time') {
+            $('#' + avatar).addClass('taken');
+            /* $('#' + avatar).hasClass('taken') ? $('#' + avatar).removeClass('taken') : */
         }
         if (key == 'name') {
             elem = $('#' + avatar).next().attr('data-name', key).html('<h2>' + value +'</h2>');
@@ -320,7 +322,7 @@ updatePlayer = function(avatar, key, value) {
         if (key == 'score') {
             $('#' + avatar.replace('avatar_','')).find('.score_bar').css('min-height',(value + 50) + 'px');
             $('#' + avatar.replace('avatar_','')).find('h1').text(value);
-            }
+        }
     }
     else if (avatar == 'begin' && !timerStart) {
         if (timeLeft >= 0) { timeSync(); }
@@ -328,16 +330,34 @@ updatePlayer = function(avatar, key, value) {
     }
 },
 clearDB = function() {
- var onComplete = function(error) { success = (!error) ? console.log('db reset.') : error; }
- game.DB.remove(onComplete);
-}
-
+   var onComplete = function(error) { success = (!error) ? console.log('db reset.') : error; }
+   game.DB.remove(onComplete);
+},
+init=function() {
+    initFunc = function(children){game.DB[children.key()]=children.val();children.forEach(function(each){updatePlayer(children.key(),each.key(),each.val());})};
+    game.DB.limitToLast(1).once("child_added", function(data) {
+        game.DB = game.DB.child(data.key());
+        game.DB.on('child_added', initFunc);
+        game.DB.on('child_changed', initFunc);
+        game.DB.on('child_removed', function(gZ) {
+            if (isPlaying(gZ.key())) {
+                $('#'+gZ.key()).removeClass('taken').parent().find('h2').text('Player '+gZ.key().replace('avatar_',''));
+                if(gZ.key() === game.player) game.player = '';
+            }
+        });
+    });
+};
 $('#reset').click(resetGame);
 $('#start').click(startGame);
-$('.answer').click( isPlaying() ? '' : gradeQuestion );
-$('.answers').click(dispatchAction);
-$('#submit').click(dispatchAction);
-$('.avatar').click(function() {
+$('.answer').click(
+    function() {
+        $('#answers').find('.clicked').removeClass('clicked');
+        $(this).addClass('clicked');
+    });
+   //isPlaying() ? '' : gradeQuestion
+   $('.answers').click(dispatchAction);
+   $('#submit').click(dispatchAction);
+   $('.avatar').click(function() {
     if (!game.player) {
         game.player = this.id;
         game.DB.child(game.player).child('time').set(Firebase.ServerValue.TIMESTAMP);
@@ -350,19 +370,7 @@ $('.avatar').click(function() {
     else {  }
 
 });
-    initFunc = function(children){game.DB[children.key()]=children.val();children.forEach(function(each){updatePlayer(children.key(),each.key(),each.val());})};
+   init();
 
-    game.DB.limitToLast(1).once("child_added", function(data) {
-        game.DB = game.DB.child(data.key());
-        game.DB.on('child_added', initFunc);
-        game.DB.on('child_changed', initFunc);
-        game.DB.on('child_removed', function(gZ) {
-        if (isPlaying(gZ.key())) {
-            $('#'+gZ.key()).removeClass('taken').parent().find('h2').text('Player '+gZ.key().replace('avatar_',''));
-            if(gZ.key() === game.player) game.player = '';
-        }
-    });
-});
-})();
 //jquery add on to add break back to the waiting text http://stackoverflow.com/questions/4535888/jquery-text-and-newlines
-(function() {$.fn.txt=function(text){this.text(text);this.html(this.html().replace(/\n/g,'<br/>'));return this;}})($);
+(function() { $.fn.txt = function(txt){ this.text(txt);this.html(this.html().replace(/\n/g,'<br/>'));return this;}})(jQuery);
